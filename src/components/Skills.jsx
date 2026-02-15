@@ -10,7 +10,7 @@ const Skills = () => {
       title: "Languages & Frontend",
       icon: <FaCode size={24} />,
       skills: [
-        { name: "C / C++", level: 90 }, 
+        { name: "C / C++", level: 90 },
         { name: "Python", level: 85 },
         { name: "JavaScript / TypeScript", level: 85 },
         { name: "React.js", level: 90 },
@@ -25,7 +25,7 @@ const Skills = () => {
         { name: "Node.js / Express", level: 85 },
         { name: "MongoDB", level: 80 },
         { name: "SQL (PostgreSQL)", level: 75 },
-        { name: "Redis", level: 70 }, 
+        { name: "Redis", level: 70 },
         { name: "REST APIs", level: 90 },
       ],
     },
@@ -34,7 +34,7 @@ const Skills = () => {
       title: "DevOps & Cloud",
       icon: <FaCloud size={24} />,
       skills: [
-        { name: "AWS (EC2, ECS, ECR)", level: 80 }, 
+        { name: "AWS (EC2, ECS, ECR)", level: 80 },
         { name: "Docker / Containerization", level: 85 },
         { name: "Linux / Bash Shell", level: 75 },
         { name: "GitHub Actions", level: 70 },
@@ -58,10 +58,9 @@ const Skills = () => {
   return (
     <section
       name="skills"
-      className="w-full min-h-screen text-text py-20 relative z-10"
+      className="w-full min-h-[calc(var(--vh)*100)] text-text py-20 relative z-10"
     >
       <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center h-full">
-        
         {/* Heading */}
         <div className="pb-12">
           <motion.h2
@@ -73,7 +72,9 @@ const Skills = () => {
             Technical Skills
           </motion.h2>
           <p className="py-6 text-gray-200 text-lg">
-            A comprehensive overview of my technical stack, from <span className="text-white font-bold">Low-level C++</span> to <span className="text-white">Cloud DevOps</span>.
+            A comprehensive overview of my technical stack, from{" "}
+            <span className="text-white font-bold">Low-level C++</span> to{" "}
+            <span className="text-white">Cloud DevOps</span>.
           </p>
         </div>
 
@@ -90,8 +91,12 @@ const Skills = () => {
               <SpotlightCard className="p-8 h-full">
                 {/* Category Title */}
                 <div className="flex items-center gap-4 mb-6 border-b border-white/10 pb-4">
-                  <span className="text-accent bg-accent/10 p-2 rounded-lg">{category.icon}</span>
-                  <h3 className="text-2xl font-bold text-white">{category.title}</h3>
+                  <span className="text-accent bg-accent/10 p-2 rounded-lg">
+                    {category.icon}
+                  </span>
+                  <h3 className="text-2xl font-bold text-white">
+                    {category.title}
+                  </h3>
                 </div>
 
                 {/* Skills List with Bars */}
@@ -99,8 +104,12 @@ const Skills = () => {
                   {category.skills.map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-1">
-                        <span className="text-gray-300 font-medium">{skill.name}</span>
-                        <span className="text-gray-500 text-sm">{skill.level}%</span>
+                        <span className="text-gray-300 font-medium">
+                          {skill.name}
+                        </span>
+                        <span className="text-gray-500 text-sm">
+                          {skill.level}%
+                        </span>
                       </div>
                       <div className="w-full bg-gray-700/50 rounded-full h-2.5 overflow-hidden">
                         <motion.div

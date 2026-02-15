@@ -16,7 +16,7 @@ const FORM_ID = "wz3lznovti3";
 const Contact = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [flash, setFlash] = useState(null); // { type, message }
+  const [flash, setFlash] = useState(null);
 
   useEffect(() => {
     if (window.Forminit) {
@@ -59,7 +59,6 @@ const Contact = () => {
 
       setLoading(false);
 
-      // ✅ SAFE checks (no destructuring crash)
       if (!res) {
         showFlash("error", "Unexpected response — please try again.");
         return;
@@ -70,14 +69,11 @@ const Contact = () => {
         return;
       }
 
-      // ✅ success path
       showFlash("success", "✅ Message sent — I’ll get in touch soon.");
       form.reset();
       form.querySelector('[name="fi-sender-phone"]').value = "+91";
     } catch (err) {
       setLoading(false);
-
-      // ✅ only show if truly failed
       console.error("Form submit error:", err);
       showFlash("error", "Connection issue — please try once more.");
     }
@@ -86,14 +82,14 @@ const Contact = () => {
   return (
     <section
       name="contact"
-      className="w-full min-h-screen text-text py-24 relative z-10 flex items-center justify-center overflow-hidden"
+      className="w-full min-h-[calc(var(--vh)*100)] text-text py-24 relative z-10 flex items-center justify-center overflow-hidden"
     >
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px]" />
       </div>
 
       <div className="max-w-screen-xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center w-full">
-        {/* LEFT — unchanged */}
+        {/* LEFT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -140,7 +136,7 @@ const Contact = () => {
           </div>
         </motion.div>
 
-        {/* RIGHT — FORM (same structure) */}
+        {/* RIGHT — FORM */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -153,7 +149,6 @@ const Contact = () => {
             >
               <h3 className="text-2xl font-bold text-white">Send a Message</h3>
 
-              {/* ✅ custom flash */}
               {flash && (
                 <div
                   className={`
@@ -180,8 +175,6 @@ const Contact = () => {
                 label="Email"
                 placeholder="you@example.com"
               />
-
-              {/* ✅ +91 default */}
               <Input
                 name="fi-sender-phone"
                 type="tel"
@@ -189,7 +182,6 @@ const Contact = () => {
                 defaultValue="+91"
                 placeholder="+91XXXXXXXXXX"
               />
-
               <Textarea
                 name="fi-text-message"
                 label="Message"

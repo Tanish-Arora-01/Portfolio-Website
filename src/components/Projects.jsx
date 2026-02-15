@@ -25,7 +25,7 @@ const Projects = () => {
       demo: "https://pulsegrid.demo",
       color: "from-red-500 to-rose-500",
       icon: <FaHeartbeat size={20} className="text-white" />,
-      disableGithub: true, // Disabled per request
+      disableGithub: true,
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const Projects = () => {
       demo: "https://neurosense.demo",
       color: "from-purple-500 to-pink-500",
       icon: <FaBrain size={20} className="text-white" />,
-      disableGithub: true, // Disabled per request
+      disableGithub: true,
     },
     {
       id: 3,
@@ -68,7 +68,7 @@ const Projects = () => {
   return (
     <section
       name="projects"
-      className="w-full min-h-screen text-text py-20 relative z-10"
+      className="w-full min-h-[calc(var(--vh)*100)] text-text py-20 relative z-10"
     >
       <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center h-full">
         {/* Heading */}
@@ -145,7 +145,6 @@ const Projects = () => {
 
                     {/* Links Container */}
                     <div className="flex items-center gap-6 mt-auto border-t border-white/5 pt-6">
-                      {/* GITHUB BUTTON LOGIC */}
                       {disableGithub ? (
                         <div className="flex items-center gap-2 text-gray-600 cursor-not-allowed opacity-50 select-none">
                           <FaGithub size={20} />
@@ -163,7 +162,6 @@ const Projects = () => {
                         </a>
                       )}
 
-                      {/* LIVE DEMO BUTTON LOGIC (Disabled for all) */}
                       {demoDisabled ? (
                         <div className="flex items-center gap-2 text-gray-600 cursor-not-allowed opacity-50 select-none">
                           <FaExternalLinkAlt size={18} />

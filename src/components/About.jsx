@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div
       name="about"
-      className="w-full min-h-screen text-text py-20 relative overflow-hidden"
+      className="w-full min-h-[calc(var(--vh)*100)] text-text py-20 relative overflow-hidden"
     >
       {/* subtle glow background */}
       <div className="absolute inset-0 -z-10">
@@ -125,23 +125,18 @@ const About = () => {
 
               <div className="flex flex-wrap gap-2">
                 {[
-                  // languages
                   "C++",
                   "Python",
                   "JavaScript",
                   "TypeScript",
                   "SQL",
                   "Bash",
-
-                  // web
                   "React",
                   "Node.js",
                   "Express",
                   "MongoDB",
                   "REST APIs",
                   "Tailwind",
-
-                  // devops/cloud
                   "AWS",
                   "Docker",
                   "Linux",

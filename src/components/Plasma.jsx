@@ -79,8 +79,8 @@ void main() {
   vec3 customColor = intensity * uCustomColor;
   vec3 finalColor = mix(rgb, customColor, step(0.5, uUseCustomColor));
   
-  float alpha = length(rgb) * uOpacity;
-  fragColor = vec4(finalColor, alpha);
+fragColor = vec4(finalColor, 1.0);
+
 }`;
 
 export const Plasma = ({
@@ -105,7 +105,8 @@ export const Plasma = ({
       const directionMultiplier = direction === "reverse" ? -1.0 : 1.0;
 
       const renderer = new Renderer({
-        alpha: true,
+        alpha: false, // 🔥 CRITICAL
+        premultipliedAlpha: false, // 🔥 CRITICAL
         antialias: false,
         dpr: Math.min(window.devicePixelRatio || 1, 2),
       });
@@ -142,8 +143,7 @@ export const Plasma = ({
         depthTest: false,
       });
 
-      gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+      gl.clearColor(0.027, 0.043, 0.078, 1.0); // matches #070b14
 
       const setSize = () => {
         const rect = containerRef.current.getBoundingClientRect();

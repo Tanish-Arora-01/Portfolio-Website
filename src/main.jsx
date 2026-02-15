@@ -5,7 +5,7 @@ import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <div className="min-h-[100dvh] bg-slate-950 text-white">
+    <div className="min-h-[100dvh]">
       <App />
     </div>
   </StrictMode>,

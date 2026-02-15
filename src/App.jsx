@@ -7,7 +7,8 @@ import Skills from "./components/Skills";
 
 function App() {
   return (
-    <div className="fixed inset-0 overflow-y-auto">
+        <div className="fixed inset-0 overflow-y-auto">
+
       <Navbar />
       <Hero />
       <About />

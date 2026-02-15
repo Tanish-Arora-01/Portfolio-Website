@@ -7,14 +7,21 @@
   --color-text: #f8fafc;
   --font-sans: "Inter", sans-serif;
 }
-/* Hide scrollbar but keep scrolling */
+
+/* FIX: Force the browser background to match your theme */
 html,
 body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE / Edge */
+  background-color: #0f172a; /* This matches your --color-primary */
+
+  /* Optional: This stops the "bounce" effect entirely if you prefer */
+  overscroll-behavior-y: none;
+
+  /* Keep your existing scrollbar settings */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none; /* Chrome / Safari */
+  display: none;
 }

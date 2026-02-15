@@ -1,12 +1,17 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import PlasmaBackground from './components/PlasmaBackground.jsx'
 
-createRoot(document.getElementById("root")).render(
+// 🔥 render background separately (outside layout tree)
+createRoot(document.getElementById('bg-root')).render(
+  <PlasmaBackground />
+)
+
+// normal app
+createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className="min-h-[100dvh]">
-      <App />
-    </div>
-  </StrictMode>,
-);
+    <App />
+  </StrictMode>
+)

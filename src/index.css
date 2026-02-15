@@ -8,15 +8,18 @@
   --font-sans: "Inter", sans-serif;
 }
 
-/* FIX: Force the browser background to match your theme */
+/* FIX: Don't set background-color here (it hides your 3D bg).
+   Instead, use 'overscroll-behavior-y: none' to kill the bounce.
+*/
 html,
 body {
-  background-color: #0f172a; /* This matches your --color-primary */
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overscroll-behavior-y: none; /* <--- This stops the white bar/bounce */
 
-  /* Optional: This stops the "bounce" effect entirely if you prefer */
-  overscroll-behavior-y: none;
-
-  /* Keep your existing scrollbar settings */
+  /* Keep your scrollbar hiding logic */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

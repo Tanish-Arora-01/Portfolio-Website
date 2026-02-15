@@ -7,36 +7,14 @@
   --color-text: #f8fafc;
   --font-sans: "Inter", sans-serif;
 }
-
+/* Hide scrollbar but keep scrolling */
 html,
 body {
-  height: 100vh;
-  height: 100dvh;
-  overflow: hidden;
-}
-
-/* FIX: Don't set background-color here (it hides your 3D bg).
-   Instead, use 'overscroll-behavior-y: none' to kill the bounce.
-*/
-html,
-body {
-  /* 1. Kill the "Bounce/Glow" effect that overlays your text */
-  overscroll-behavior-y: none;
-
-  /* 2. Remove the "Blue Box" flash when you tap buttons on mobile */
-  -webkit-tap-highlight-color: transparent;
-
-  /* 3. Ensure full height so 3D bg fills screen */
-  width: 100%;
-  margin: 0;
-  padding: 0;
-
-  /* Keep your scrollbar hiding */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE / Edge */
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none;
+  display: none; /* Chrome / Safari */
 }

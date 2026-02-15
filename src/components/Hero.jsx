@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import Laptop from "./Laptop";
 import SpotlightButton from "./SpotlightButton";
@@ -41,6 +42,7 @@ const Hero = () => {
       >
         {/* TEXT SIDE */}
         <div className="w-full lg:w-1/2 mt-20 md:mt-0">
+          {/* Original Text Styles Preserved */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,36 +82,51 @@ const Hero = () => {
             systems, and building high-performance web experiences.
           </motion.p>
 
-          {/* socials */}
-          <div className="flex gap-6 mb-10">
-            <a
-              href="https://github.com/Tanish-Arora-01"
-              target="_blank"
-              rel="noreferrer"
-              className="p-3 rounded-full backdrop-blur-sm bg-white/5 text-gray-100 hover:text-white hover:bg-white/10 transition-all duration-300"
-            >
-              <FaGithub size={24} />
-            </a>
+          {/* NEW BUTTON FORMAT: Action Row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7 }}
+            className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+          >
+            <Link to="projects" smooth duration={600}>
+              <SpotlightButton className="px-8 py-4 text-base font-medium">
+                View My Work
+                <HiArrowNarrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+              </SpotlightButton>
+            </Link>
 
-            <a
-              href="https://www.linkedin.com/in/tanish-arora-1105ta"
-              target="_blank"
-              rel="noreferrer"
-              className="p-3 rounded-full backdrop-blur-sm bg-white/5 text-gray-100 hover:text-white hover:bg-white/10 transition-all duration-300"
-            >
-              <FaLinkedin size={24} />
-            </a>
-          </div>
-
-          <Link to="projects" smooth duration={600}>
-            <SpotlightButton className="px-10 py-4">
-              View My Work
-              <HiArrowNarrowRight className="transition-transform duration-300 group-hover:rotate-90 group-hover:translate-x-1" />
-            </SpotlightButton>
-          </Link>
+            {/* Glass Social Dock */}
+            <div className="flex gap-4 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+              <a
+                href="https://github.com/Tanish-Arora-01"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+              >
+                <FaGithub size={22} />
+              </a>
+              <a
+                href="https://leetcode.com/u/Tanish_1011/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+              >
+                <SiLeetcode size={22} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/tanish-arora-1105ta"
+                target="_blank"
+                rel="noreferrer"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+              >
+                <FaLinkedin size={22} />
+              </a>
+            </div>
+          </motion.div>
         </div>
 
-        {/* 3D SIDE */}
+        {/* 3D SIDE (Unchanged) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, x: 40 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}

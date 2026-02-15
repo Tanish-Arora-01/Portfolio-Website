@@ -5,10 +5,10 @@ import {
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
+  FaPaperPlane,
 } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 import { motion } from "framer-motion";
-import SpotlightCard from "./SpotlightCard";
 import SpotlightButton from "./SpotlightButton";
 
 const FORM_ID = "wz3lznovti3";
@@ -47,6 +47,7 @@ const Contact = () => {
 
     const phone = formData.get("fi-sender-phone") || "";
 
+    // Basic validation logic preserved
     if (!phone.startsWith("+") || phone.length < 11) {
       showFlash("error", "Please enter mobile in +91XXXXXXXXXX format.");
       return;
@@ -54,9 +55,7 @@ const Contact = () => {
 
     try {
       setLoading(true);
-
       const res = await window.forminit.submit(FORM_ID, formData);
-
       setLoading(false);
 
       if (!res) {
@@ -71,7 +70,9 @@ const Contact = () => {
 
       showFlash("success", "✅ Message sent — I’ll get in touch soon.");
       form.reset();
-      form.querySelector('[name="fi-sender-phone"]').value = "+91";
+      // Reset phone default value
+      const phoneInput = form.querySelector('[name="fi-sender-phone"]');
+      if (phoneInput) phoneInput.value = "+91";
     } catch (err) {
       setLoading(false);
       console.error("Form submit error:", err);
@@ -79,158 +80,153 @@ const Contact = () => {
     }
   };
 
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { type: "spring", stiffness: 60, damping: 15 },
-    },
-  };
-
   return (
     <section
       name="contact"
       className="w-full min-h-[100dvh] text-text py-24 relative z-10 flex items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px]" />
+      {/* Background Decor */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[120px] mix-blend-screen" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] mix-blend-screen" />
       </div>
 
-      <div className="max-w-screen-xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start w-full">
-        {/* LEFT */}
+      <div className="max-w-6xl w-full mx-auto px-6">
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="space-y-8"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-5xl font-bold text-white"
-          >
-            Let's build something amazing.
-          </motion.h2>
-
-          <div className="grid sm:grid-cols-2 gap-6">
-            <motion.div variants={itemVariants}>
-              <InfoCard
-                icon={<FaEnvelope />}
-                label="Email"
-                value="tanisharora1105@gmail.com"
-                href="mailto:tanisharora1105@gmail.com"
-              />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <InfoCard
-                icon={<FaPhoneAlt />}
-                label="Phone"
-                value="+91-9461113664"
-              />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <InfoCard
-                icon={<FaMapMarkerAlt />}
-                label="Location"
-                value="Chennai, India"
-              />
-            </motion.div>
-
-            <motion.div variants={itemVariants}>
-              <SpotlightCard className="p-6 backdrop-blur-sm bg-white/5 border-white/15 h-full">
-                <div className="flex gap-4 mb-6">
-                  <Social href="https://www.linkedin.com/in/tanish-arora-1105ta/">
-                    <FaLinkedin size={22} />
-                  </Social>
-                  <Social href="https://github.com/Tanish-Arora-01">
-                    <FaGithub size={22} />
-                  </Social>
-                </div>
-                <a href="/resume_SDE.pdf" download>
-                  <SpotlightButton className="px-5 py-3 text-sm w-full">
-                    Download Resume <HiDownload />
-                  </SpotlightButton>
-                </a>
-              </SpotlightCard>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* RIGHT — FORM */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            type: "spring",
-            stiffness: 50,
-            damping: 20,
-            delay: 0.3,
-          }}
           viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="relative rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-white/10 shadow-2xl"
         >
-          <div className="relative rounded-3xl p-[2px] bg-gradient-to-br from-white/20 via-white/5 to-transparent">
-            <form
-              onSubmit={handleSubmit}
-              className="bg-secondary/60 backdrop-blur-xl rounded-3xl p-8 md:p-10 shadow-2xl relative space-y-6"
-            >
-              <h3 className="text-2xl font-bold text-white">Send a Message</h3>
+          <div className="grid lg:grid-cols-5 min-h-[600px]">
+            {/* LEFT COLUMN: Contact Info */}
+            <div className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-black p-10 flex flex-col justify-between relative overflow-hidden">
+              {/* Subtle pattern overlay */}
+              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
 
-              {flash && (
-                <div
-                  className={`
-                  px-4 py-3 rounded-xl border
-                  ${
-                    flash.type === "success"
-                      ? "bg-accent/15 border-accent/40 text-accent"
-                      : "bg-red-500/10 border-red-500/30 text-red-400"
-                  }
-                `}
-                >
-                  {flash.message}
+              <div className="relative z-10 space-y-2">
+                <h2 className="text-4xl font-bold text-white tracking-tight">
+                  Let's Talk
+                </h2>
+                <p className="text-gray-400 text-lg">
+                  Have a project in mind or just want to say hi? I'm always open
+                  to discussing new ideas.
+                </p>
+              </div>
+
+              <div className="relative z-10 space-y-8 mt-12 lg:mt-0">
+                <div className="space-y-6">
+                  <ContactRow
+                    icon={<FaEnvelope />}
+                    label="Email me at"
+                    value="tanisharora1105@gmail.com"
+                    href="mailto:tanisharora1105@gmail.com"
+                  />
+                  <ContactRow
+                    icon={<FaPhoneAlt />}
+                    label="Call me at"
+                    value="+91-9461113664"
+                  />
+                  <ContactRow
+                    icon={<FaMapMarkerAlt />}
+                    label="Based in"
+                    value="Chennai, India"
+                  />
                 </div>
-              )}
 
-              <Input
-                name="fi-sender-fullName"
-                label="Full Name"
-                placeholder="Your name"
-              />
-              <Input
-                name="fi-sender-email"
-                type="email"
-                label="Email"
-                placeholder="you@example.com"
-              />
-              <Input
-                name="fi-sender-phone"
-                type="tel"
-                label="Mobile Number"
-                defaultValue="+91"
-                placeholder="+91XXXXXXXXXX"
-              />
-              <Textarea
-                name="fi-text-message"
-                label="Message"
-                placeholder="Tell me about your project..."
-              />
+                <div className="flex gap-4 pt-4 border-t border-white/10">
+                  <SocialButton
+                    href="https://github.com/Tanish-Arora-01"
+                    icon={<FaGithub size={20} />}
+                  />
+                  <SocialButton
+                    href="https://www.linkedin.com/in/tanish-arora-1105ta/"
+                    icon={<FaLinkedin size={20} />}
+                  />
+                  <a
+                    href="/resume_SDE.pdf"
+                    download
+                    className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-accent transition-colors ml-auto"
+                  >
+                    Resume <HiDownload size={18} />
+                  </a>
+                </div>
+              </div>
+            </div>
 
-              <SpotlightButton type="submit" className="w-full py-4">
-                {loading ? "Sending..." : "Send Message"}
-              </SpotlightButton>
-            </form>
+            {/* RIGHT COLUMN: The Form */}
+            <div className="lg:col-span-3 bg-white/[0.02] p-8 md:p-12 relative">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6 max-w-lg mx-auto lg:mx-0"
+              >
+                {/* Flash Message */}
+                {flash && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`px-4 py-3 rounded-xl text-sm font-medium ${
+                      flash.type === "success"
+                        ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                        : "bg-red-500/10 text-red-400 border border-red-500/20"
+                    }`}
+                  >
+                    {flash.message}
+                  </motion.div>
+                )}
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <InputGroup
+                    label="Your Name"
+                    name="fi-sender-fullName"
+                    placeholder="John Doe"
+                  />
+                  <InputGroup
+                    label="Your Email"
+                    name="fi-sender-email"
+                    type="email"
+                    placeholder="john@example.com"
+                  />
+                </div>
+
+                <InputGroup
+                  label="Phone Number"
+                  name="fi-sender-phone"
+                  type="tel"
+                  defaultValue="+91"
+                  placeholder="+91XXXXXXXXXX"
+                />
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    name="fi-text-message"
+                    rows="4"
+                    required
+                    placeholder="Tell me about your project..."
+                    className="w-full bg-white/5 border border-transparent rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:bg-white/10 focus:border-accent/30 focus:ring-1 focus:ring-accent/30 transition-all outline-none resize-none"
+                  />
+                </div>
+
+                <SpotlightButton
+                  type="submit"
+                  className="w-full py-4 text-base font-semibold group"
+                >
+                  <span className="flex items-center justify-center gap-2">
+                    {loading ? "Sending..." : "Send Message"}
+                    {!loading && (
+                      <FaPaperPlane
+                        className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                        size={14}
+                      />
+                    )}
+                  </span>
+                </SpotlightButton>
+              </form>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -238,74 +234,58 @@ const Contact = () => {
   );
 };
 
-/* helpers unchanged */
+// --- Sub-components for cleaner code ---
 
-const InfoCard = ({ icon, label, value, href }) => (
-  <SpotlightCard className="p-6 backdrop-blur-sm bg-white/5 border-white/15 h-full">
-    {href ? (
-      <a href={href}>
-        <Icon icon={icon} />
-        <Label>{label}</Label>
-        <Value>{value}</Value>
-      </a>
-    ) : (
-      <>
-        <Icon icon={icon} />
-        <Label>{label}</Label>
-        <Value>{value}</Value>
-      </>
-    )}
-  </SpotlightCard>
-);
-
-const Icon = ({ icon }) => (
-  <div className="h-10 w-10 bg-accent/20 rounded-lg flex items-center justify-center text-accent mb-4">
-    {icon}
+const ContactRow = ({ icon, label, value, href }) => (
+  <div className="flex items-start gap-4">
+    <div className="mt-1 p-2 rounded-lg bg-white/5 text-accent">{icon}</div>
+    <div>
+      <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold">
+        {label}
+      </p>
+      {href ? (
+        <a
+          href={href}
+          className="text-white hover:text-accent transition-colors font-medium"
+        >
+          {value}
+        </a>
+      ) : (
+        <p className="text-white font-medium">{value}</p>
+      )}
+    </div>
   </div>
 );
 
-const Label = ({ children }) => (
-  <h3 className="text-gray-400 text-sm mb-1">{children}</h3>
-);
-
-const Value = ({ children }) => (
-  <p className="text-white font-semibold text-sm">{children}</p>
-);
-
-const Social = ({ href, children }) => (
+const SocialButton = ({ href, icon }) => (
   <a
     href={href}
     target="_blank"
     rel="noreferrer"
-    className="text-white hover:text-accent"
+    className="p-3 rounded-full bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all"
   >
-    {children}
+    {icon}
   </a>
 );
 
-const Input = ({ name, label, type = "text", placeholder, defaultValue }) => (
-  <div>
-    <label className="block text-sm text-gray-400 mb-2">{label}</label>
+const InputGroup = ({
+  label,
+  name,
+  type = "text",
+  placeholder,
+  defaultValue,
+}) => (
+  <div className="w-full">
+    <label className="block text-sm font-medium text-gray-400 mb-2">
+      {label}
+    </label>
     <input
       name={name}
       type={type}
       required
       defaultValue={defaultValue}
       placeholder={placeholder}
-      className="w-full rounded-xl px-5 py-4 bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:border-accent/60 focus:outline-none"
-    />
-  </div>
-);
-
-const Textarea = ({ name, label, placeholder }) => (
-  <div>
-    <label className="block text-sm text-gray-400 mb-2">{label}</label>
-    <textarea
-      name={name}
-      rows="5"
-      required
-      placeholder={placeholder}
-      className="w-full rounded-xl px-5 py-4 resize-none bg-white/5 border border-white/15 text-white placeholder-gray-500 focus:border-accent/60 focus:outline-none"
+      className="w-full bg-white/5 border border-transparent rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:bg-white/10 focus:border-accent/30 focus:ring-1 focus:ring-accent/30 transition-all outline-none"
     />
   </div>
 );

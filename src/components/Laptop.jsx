@@ -5,16 +5,15 @@ import {
   useGLTF,
   useAnimations,
   OrbitControls,
-  ContactShadows,
   Html,
 } from "@react-three/drei";
-import { Box3, Vector3 } from "three";
+import { Box3, Vector3, MathUtils } from "three";
 
 function MacBookModel() {
   const { scene, animations } = useGLTF("/macbook.glb");
   const { actions, names } = useAnimations(animations, scene);
   const groupRef = useRef();
-  const { camera, controls } = useThree(); // Fixed: Removed duplicate useThree call if it was there
+  const { camera, controls } = useThree();
 
   useEffect(() => {
     scene.traverse((child) => {
@@ -58,26 +57,44 @@ function MacBookModel() {
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    if (!groupRef.current) return; // Fixed: check if ref exists
+    if (!groupRef.current) return;
 
+    // --- 1. VERTICAL TILT (X-AXIS) ---
+    // UPDATED: Increased from PI/10 to PI/5 (approx 36 degrees)
+    // This tips the laptop forward more to show the "top" (keyboard).
+    groupRef.current.rotation.x = Math.PI / 5 + Math.cos(t / 2) / 10;
+
+    // --- 2. FLOAT POSITION (Y-AXIS) ---
     groupRef.current.position.y = -1.25 + Math.sin(t) * 0.15;
-    groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.08;
 
+    // --- 3. ROTATION ANGLE (Y-AXIS / LEFT-RIGHT) ---
     const action = actions[names[0]];
+    const startRotation = (-1 * Math.PI) / 10;
+    const idleRotation = Math.sin(t * 0.3) * 0.08;
+
     if (action) {
       const duration = action.getClip().duration;
       const progress = action.time / duration;
+      const transitionStart = 0.8;
 
-      let targetTilt = 0;
-      if (progress > 0.75) {
-        const tiltProgress = (progress - 0.75) / 0.2;
-        targetTilt = 0.5 * tiltProgress;
+      if (progress < transitionStart) {
+        // Phase 1: Hold the left angle steady while opening
+        groupRef.current.rotation.y = startRotation;
+      } else {
+        // Phase 2: Smoothly blend from the left angle to the idle sway
+        const blend = Math.min(
+          1,
+          (progress - transitionStart) / (1 - transitionStart),
+        );
+        groupRef.current.rotation.y = MathUtils.lerp(
+          startRotation,
+          idleRotation,
+          blend,
+        );
       }
-      // Fixed: added safe check for rotation
-      if (groupRef.current) {
-        groupRef.current.rotation.x +=
-          (targetTilt - groupRef.current.rotation.x) * 0.08;
-      }
+    } else {
+      // Fallback
+      groupRef.current.rotation.y = idleRotation;
     }
   });
 
@@ -92,25 +109,14 @@ const Laptop = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // 1. Define the media query (Tailwind 'md' is usually 768px)
     const mediaQuery = window.matchMedia("(max-width: 768px)");
-
-    // 2. Set initial state
     setIsMobile(mediaQuery.matches);
-
-    // 3. Listen for changes (in case user resizes window or rotates phone)
     const handleResize = (event) => setIsMobile(event.matches);
     mediaQuery.addEventListener("change", handleResize);
-
-    // 4. Cleanup
     return () => mediaQuery.removeEventListener("change", handleResize);
   }, []);
 
-  // 🔴 PERFORMANCE SAVER: If mobile, return null immediately.
-  // This prevents the Canvas from ever initializing.
-  if (isMobile) {
-    return null;
-  }
+  if (isMobile) return null;
 
   return (
     <div className="h-[650px] md:h-[820px] w-full">

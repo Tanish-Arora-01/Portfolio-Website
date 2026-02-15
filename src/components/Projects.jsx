@@ -81,11 +81,11 @@ const Projects = () => {
           >
             Featured Projects
           </motion.h2>
-          <p className="py-6 text-gray-400 text-lg">
+          <p className="py-6 text-gray-200 text-lg">
             Architecting scalable solutions with{" "}
-            <span className="text-white">Polyglot Persistence</span>,{" "}
-            <span className="text-white">AI/ML</span>, and{" "}
-            <span className="text-white">Cloud DevOps</span>.
+            <span className="text-white font-bold">Polyglot Persistence</span>,{" "}
+            <span className="text-white font-bold">AI/ML</span>, and{" "}
+            <span className="text-white font-bold">Cloud DevOps</span>.
           </p>
         </div>
 

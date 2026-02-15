@@ -24,15 +24,15 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* LEFT — MAIN TEXT */}
-          <div className="text-lg leading-relaxed text-gray-400 space-y-6">
+          <div className="text-lg leading-relaxed text-gray-200 space-y-6">
             <p>
               I’m a{" "}
-              <span className="text-white font-semibold">
+              <span className="text-white font-bold">
                 Computer Science Engineering student
               </span>{" "}
-              at <span className="text-white font-semibold">VIT Chennai</span>{" "}
+              at <span className="text-white font-bold">VIT Chennai</span>{" "}
               (2023–2027) with a current{" "}
-              <span className="text-accent font-bold text-xl">
+              <span className="text-accent font-extrabold text-xl">
                 CGPA of 8.69
               </span>
               . I build production-ready full-stack applications and focus on
@@ -41,11 +41,11 @@ const About = () => {
 
             <p>
               My core work is centered around{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 React, Node.js, Express, MongoDB, and REST APIs
               </span>
               , supported by strong fundamentals in{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 Data Structures, Databases, Operating Systems, and Networking
               </span>
               .
@@ -53,15 +53,15 @@ const About = () => {
 
             <p>
               I’ve built systems including a{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 privacy-focused document redaction engine
               </span>{" "}
               using Python + OpenCV, a{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 containerized full-stack marketplace platform
               </span>{" "}
               with CI/CD pipelines, and a{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 real-time sports update application
               </span>{" "}
               powered by REST APIs and live data flows.
@@ -69,12 +69,12 @@ const About = () => {
 
             <p>
               I actively work with{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 AWS, Docker, Linux, and GitHub Actions
               </span>{" "}
               to understand how applications move from development to
               deployment. My long-term focus is at the intersection of{" "}
-              <span className="text-white">
+              <span className="text-white font-bold">
                 Full-Stack Engineering, Cloud Infrastructure, and DevOps.
               </span>
             </p>
@@ -91,22 +91,26 @@ const About = () => {
               <ul className="space-y-3 text-sm text-gray-300">
                 <li className="flex justify-between border-b border-white/10 pb-2">
                   <span>Degree</span>
-                  <span className="text-accent text-right">B.Tech CSE</span>
+                  <span className="text-accent text-right font-semibold">
+                    B.Tech CSE
+                  </span>
                 </li>
 
                 <li className="flex justify-between border-b border-white/10 pb-2">
                   <span>University</span>
-                  <span className="text-accent text-right">VIT Chennai</span>
+                  <span className="text-accent text-right font-semibold">
+                    VIT Chennai
+                  </span>
                 </li>
 
                 <li className="flex justify-between border-b border-white/10 pb-2">
                   <span>CGPA</span>
-                  <span className="text-accent font-bold">8.69</span>
+                  <span className="text-accent font-extrabold">8.69</span>
                 </li>
 
                 <li className="flex justify-between">
                   <span>Primary Track</span>
-                  <span className="text-accent text-right">
+                  <span className="text-accent text-right font-semibold">
                     Full Stack + DevOps
                   </span>
                 </li>
@@ -150,7 +154,7 @@ const About = () => {
                     className="
                       px-3 py-1 rounded-full text-xs
                       bg-white/5 border border-white/15
-                      text-gray-300
+                      text-gray-100 font-semibold
                       hover:text-white hover:border-accent/60
                       hover:bg-accent/10
                       transition-all duration-300
@@ -169,7 +173,7 @@ const About = () => {
                 Core Coursework
               </h3>
 
-              <div className="grid grid-cols-2 gap-3 text-sm text-gray-300">
+              <div className="grid grid-cols-2 gap-3 text-sm text-gray-300 font-medium">
                 <span>Data Structures</span>
                 <span>OOP</span>
                 <span>DBMS</span>

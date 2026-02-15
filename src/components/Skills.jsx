@@ -72,8 +72,8 @@ const Skills = () => {
           >
             Technical Skills
           </motion.h2>
-          <p className="py-6 text-gray-400 text-lg">
-            A comprehensive overview of my technical stack, from <span className="text-white">Low-level C++</span> to <span className="text-white">Cloud DevOps</span>.
+          <p className="py-6 text-gray-200 text-lg">
+            A comprehensive overview of my technical stack, from <span className="text-white font-bold">Low-level C++</span> to <span className="text-white">Cloud DevOps</span>.
           </p>
         </div>
 

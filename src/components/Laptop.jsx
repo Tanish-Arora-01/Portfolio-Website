@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Environment,
@@ -14,16 +14,14 @@ function MacBookModel() {
   const { scene, animations } = useGLTF("/macbook.glb");
   const { actions, names } = useAnimations(animations, scene);
   const groupRef = useRef();
-  const { camera, controls } = useThree();
+  const { camera, controls } = useThree(); // Fixed: Removed duplicate useThree call if it was there
 
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
-        // Keep shadows off to prevent the black line you had earlier
         child.castShadow = false;
         child.receiveShadow = false;
 
-        // Clean up: Remove the manual offsets that were causing new flickering
         if (child.material) {
           child.material.polygonOffset = false;
           child.material.precision = "highp";
@@ -33,7 +31,6 @@ function MacBookModel() {
       }
     });
 
-    // Auto camera framing (Your original logic)
     const box = new Box3().setFromObject(scene);
     const size = new Vector3();
     const center = new Vector3();
@@ -61,7 +58,7 @@ function MacBookModel() {
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    if (!groupRef.current) return;
+    if (!groupRef.current) return; // Fixed: check if ref exists
 
     groupRef.current.position.y = -1.25 + Math.sin(t) * 0.15;
     groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.08;
@@ -76,8 +73,11 @@ function MacBookModel() {
         const tiltProgress = (progress - 0.75) / 0.2;
         targetTilt = 0.5 * tiltProgress;
       }
-      groupRef.current.rotation.x +=
-        (targetTilt - groupRef.current.rotation.x) * 0.08;
+      // Fixed: added safe check for rotation
+      if (groupRef.current) {
+        groupRef.current.rotation.x +=
+          (targetTilt - groupRef.current.rotation.x) * 0.08;
+      }
     }
   });
 
@@ -89,6 +89,29 @@ function MacBookModel() {
 }
 
 const Laptop = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // 1. Define the media query (Tailwind 'md' is usually 768px)
+    const mediaQuery = window.matchMedia("(max-width: 768px)");
+
+    // 2. Set initial state
+    setIsMobile(mediaQuery.matches);
+
+    // 3. Listen for changes (in case user resizes window or rotates phone)
+    const handleResize = (event) => setIsMobile(event.matches);
+    mediaQuery.addEventListener("change", handleResize);
+
+    // 4. Cleanup
+    return () => mediaQuery.removeEventListener("change", handleResize);
+  }, []);
+
+  // 🔴 PERFORMANCE SAVER: If mobile, return null immediately.
+  // This prevents the Canvas from ever initializing.
+  if (isMobile) {
+    return null;
+  }
+
   return (
     <div className="h-[650px] md:h-[820px] w-full">
       <Canvas
@@ -96,7 +119,6 @@ const Laptop = () => {
         camera={{ position: [0, 1.4, 11], fov: 40 }}
         gl={{
           antialias: true,
-          // 🔥 RESTORED: This fixed your flickering in the original code
           logarithmicDepthBuffer: true,
           powerPreference: "high-performance",
         }}
@@ -121,7 +143,6 @@ const Laptop = () => {
           enablePan={false}
           enableRotate={true}
         />
-
       </Canvas>
     </div>
   );

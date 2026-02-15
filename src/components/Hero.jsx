@@ -13,10 +13,7 @@ const Hero = () => {
       className="w-full min-h-screen text-text overflow-hidden relative"
     >
       {/* glow bg */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-24 left-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl opacity-40" />
-        <div className="absolute bottom-24 right-10 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl opacity-30" />
-      </div>
+     
 
       <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between min-h-screen relative z-10">
         {/* TEXT SIDE — width fixed */}
@@ -52,12 +49,12 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-gray-400 py-2 max-w-lg text-lg mb-8 leading-relaxed"
+            className="text-gray-200 py-2 max-w-lg text-lg mb-8 leading-relaxed"
           >
             Computer Science Engineering student at{" "}
             <span className="text-white font-semibold">VIT Chennai</span>.
-            Passionate about Development, System Design, DevOps, scalable cloud systems, and building
-            high-performance web experiences.
+            Passionate about Development, System Design, DevOps, scalable cloud
+            systems, and building high-performance web experiences.
           </motion.p>
 
           {/* socials */}
@@ -66,7 +63,7 @@ const Hero = () => {
               href="https://github.com/Tanish-Arora-01"
               target="_blank"
               rel="noreferrer"
-              className="p-3 rounded-full backdrop-blur-sm bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300"
+              className="p-3 rounded-full backdrop-blur-sm bg-white/5 text-gray-100 hover:text-white hover:bg-white/10 transition-all duration-300"
             >
               <FaGithub size={24} />
             </a>
@@ -75,7 +72,7 @@ const Hero = () => {
               href="https://www.linkedin.com/in/tanish-arora-1105ta"
               target="_blank"
               rel="noreferrer"
-              className="p-3 rounded-full backdrop-blur-sm bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-300"
+              className="p-3 rounded-full backdrop-blur-sm bg-white/5 text-gray-100 hover:text-white hover:bg-white/10 transition-all duration-300"
             >
               <FaLinkedin size={24} />
             </a>

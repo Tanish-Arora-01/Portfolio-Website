@@ -18,3 +18,12 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none; /* Chrome / Safari */
 }
+
+:root {
+  --vh: 1vh;
+}
+
+/* Use it wherever full screen height is needed */
+.full-height {
+  height: calc(var(--vh) * 100);
+}

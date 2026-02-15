@@ -10,12 +10,9 @@ const Hero = () => {
   return (
     <section
       name="home"
-      className="w-full min-h-screen text-text overflow-hidden relative"
+      className="w-full min-h-[calc(var(--vh)*100)] text-text overflow-hidden relative"
     >
-      {/* glow bg */}
-     
-
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between min-h-screen relative z-10">
+      <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between min-h-[calc(var(--vh)*100)] relative z-10">
         {/* TEXT SIDE — width fixed */}
         <div className="w-full lg:w-1/2 mt-20 md:mt-0">
           <motion.p

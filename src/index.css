@@ -13,13 +13,19 @@
 */
 html,
 body {
-  margin: 0;
-  padding: 0;
+  /* 1. Kill the "Bounce/Glow" effect that overlays your text */
+  overscroll-behavior-y: none;
+
+  /* 2. Remove the "Blue Box" flash when you tap buttons on mobile */
+  -webkit-tap-highlight-color: transparent;
+
+  /* 3. Ensure full height so 3D bg fills screen */
   width: 100%;
   height: 100%;
-  overscroll-behavior-y: none; /* <--- This stops the white bar/bounce */
+  margin: 0;
+  padding: 0;
 
-  /* Keep your scrollbar hiding logic */
+  /* Keep your scrollbar hiding */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div
       name="about"
-      className="w-full min-h-[calc(var(--vh)*100)] text-text py-20 relative overflow-hidden"
+      className="w-full text-text py-20 relative overflow-hidden"
     >
       {/* subtle glow background */}
       <div className="absolute inset-0 -z-10">
@@ -146,15 +146,7 @@ const About = () => {
                 ].map((skill) => (
                   <span
                     key={skill}
-                    className="
-                      px-3 py-1 rounded-full text-xs
-                      bg-white/5 border border-white/15
-                      text-gray-100 font-semibold
-                      hover:text-white hover:border-accent/60
-                      hover:bg-accent/10
-                      transition-all duration-300
-                      cursor-default
-                    "
+                    className="px-3 py-1 rounded-full text-xs bg-white/5 border border-white/15 text-gray-100 font-semibold hover:text-white hover:border-accent/60 hover:bg-accent/10 transition-all duration-300 cursor-default"
                   >
                     {skill}
                   </span>

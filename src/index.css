@@ -7,23 +7,22 @@
   --color-text: #f8fafc;
   --font-sans: "Inter", sans-serif;
 }
+
 /* Hide scrollbar but keep scrolling */
 html,
 body {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE / Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-  display: none; /* Chrome / Safari */
+  display: none;
 }
 
+/* ---- VISUAL VIEWPORT HEIGHT for HERO only ---- */
+/* Used by Hero section to handle dynamic address bar on mobile */
+/* All other sections use natural flow with padding */
 :root {
-  --vh: 1vh;
-}
-
-/* Use it wherever full screen height is needed */
-.full-height {
-  height: calc(var(--vh) * 100);
+  --app-height: 100vh;
 }

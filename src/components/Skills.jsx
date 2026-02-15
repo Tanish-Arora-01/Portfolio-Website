@@ -56,11 +56,8 @@ const Skills = () => {
   ];
 
   return (
-    <section
-      name="skills"
-      className="w-full min-h-[calc(var(--vh)*100)] text-text py-20 relative z-10"
-    >
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center h-full">
+    <section name="skills" className="w-full text-text py-20 relative z-10">
+      <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center">
         {/* Heading */}
         <div className="pb-12">
           <motion.h2

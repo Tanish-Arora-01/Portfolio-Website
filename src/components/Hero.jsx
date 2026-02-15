@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
@@ -7,13 +7,39 @@ import Laptop from "./Laptop";
 import SpotlightButton from "./SpotlightButton";
 
 const Hero = () => {
+  useEffect(() => {
+    const setAppHeight = () => {
+      const height = window.visualViewport
+        ? window.visualViewport.height
+        : window.innerHeight;
+
+      document.documentElement.style.setProperty("--app-height", `${height}px`);
+    };
+
+    setAppHeight();
+
+    window.visualViewport?.addEventListener("resize", setAppHeight);
+    window.visualViewport?.addEventListener("scroll", setAppHeight);
+    window.addEventListener("orientationchange", setAppHeight);
+
+    return () => {
+      window.visualViewport?.removeEventListener("resize", setAppHeight);
+      window.visualViewport?.removeEventListener("scroll", setAppHeight);
+      window.removeEventListener("orientationchange", setAppHeight);
+    };
+  }, []);
+
   return (
     <section
       name="home"
-      className="w-full min-h-[calc(var(--vh)*100)] text-text overflow-hidden relative"
+      className="w-full text-text overflow-hidden relative"
+      style={{ height: "var(--app-height)" }}
     >
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between min-h-[calc(var(--vh)*100)] relative z-10">
-        {/* TEXT SIDE — width fixed */}
+      <div
+        className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10"
+        style={{ height: "var(--app-height)" }}
+      >
+        {/* TEXT SIDE */}
         <div className="w-full lg:w-1/2 mt-20 md:mt-0">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -83,7 +109,7 @@ const Hero = () => {
           </Link>
         </div>
 
-        {/* 3D SIDE — unchanged */}
+        {/* 3D SIDE */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95, x: 40 }}
           animate={{ opacity: 1, scale: 1, x: 0 }}

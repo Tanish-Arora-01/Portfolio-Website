@@ -2,12 +2,27 @@ import Plasma from "./Plasma";
 
 function PlasmaBackground() {
   return (
-    <div className="fixed inset-0 -z-10">
+    <div
+      className="fixed inset-0 -z-10 overflow-hidden"
+      style={{
+        transform: "translateZ(0)",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        willChange: "transform",
+        isolation: "isolate",
+      }}
+    >
       {/* base background */}
       <div className="absolute inset-0 bg-[#070b14]" />
 
-      {/* IMPORTANT: real DOM container for OGL */}
-      <div className="absolute inset-0 w-screen h-screen">
+      {/* OGL container — MUST be fixed, not absolute */}
+      <div
+        className="fixed inset-0"
+        style={{
+          transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+        }}
+      >
         <Plasma
           color="#b19eef"
           speed={0.4}

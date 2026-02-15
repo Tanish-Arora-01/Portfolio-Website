@@ -8,11 +8,12 @@
   --font-sans: "Inter", sans-serif;
 }
 
-html, body {
-  height: 100%;
+html,
+body {
+  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
-
 
 /* FIX: Don't set background-color here (it hides your 3D bg).
    Instead, use 'overscroll-behavior-y: none' to kill the bounce.
@@ -27,7 +28,6 @@ body {
 
   /* 3. Ensure full height so 3D bg fills screen */
   width: 100%;
-  height: 100%;
   margin: 0;
   padding: 0;
 

@@ -8,6 +8,27 @@
   --font-sans: "Inter", sans-serif;
 }
 
+/* ---- CRITICAL: Full viewport setup for fixed positioning on mobile ---- */
+/* html/body must have explicit height for position: fixed to work correctly */
+/* especially with dynamic address bar on Chrome Android */
+html {
+  height: 100%;
+  height: 100dvh;
+  width: 100%;
+}
+
+body {
+  height: 100%;
+  height: 100dvh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* Hide scrollbar but keep scrolling */
 html,
 body {
@@ -20,12 +41,19 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+/* Root element must support full viewport layout */
+#root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  min-height: 100dvh;
+  position: relative;
+}
+
 /* ---- VISUAL VIEWPORT HEIGHT for fallback ---- */
 /* --app-height is updated via VisualViewport API listener for older browsers */
 /* Modern browsers use 100dvh (dynamic viewport height) which handles address bar automatically */
 :root {
   --app-height: 100dvh;
 }
-
-/* Ensure html/body don't lock to ICB (Initial Containing Block) height */
-/* which would conflict with dynamic address bar resizing */

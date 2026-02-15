@@ -8,11 +8,12 @@ import Skills from "./components/Skills";
 
 function App() {
   return (
-    <div className="relative">
-      {/* This must be outside the main div flow */}
+    <div className="relative w-full min-h-[100dvh]">
+      {/* Background must be outside content flow and cover full viewport */}
       <PlasmaBackground />
 
-      <div className="relative z-10">
+      {/* Content layers on top with z-index */}
+      <div className="relative z-10 w-full">
         <Navbar />
         <Hero />
         <About />

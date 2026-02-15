@@ -33,11 +33,11 @@ const Hero = () => {
     <section
       name="home"
       className="w-full text-text overflow-hidden relative"
-      style={{ height: "var(--app-height)" }}
+      style={{ height: "100dvh" }}
     >
       <div
         className="max-w-screen-xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between relative z-10"
-        style={{ height: "var(--app-height)" }}
+        style={{ height: "100dvh" }}
       >
         {/* TEXT SIDE */}
         <div className="w-full lg:w-1/2 mt-20 md:mt-0">

@@ -5,7 +5,7 @@ const About = () => {
   return (
     <div
       name="about"
-      className="w-full min-h-[var(--app-height)] text-text py-20 relative overflow-hidden flex flex-col justify-center"
+      className="w-full min-h-[100dvh] text-text py-20 relative overflow-hidden flex flex-col justify-center"
     >
       {/* subtle glow background */}
       <div className="absolute inset-0 -z-10">

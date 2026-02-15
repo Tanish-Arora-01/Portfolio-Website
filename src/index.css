@@ -20,9 +20,12 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-/* ---- VISUAL VIEWPORT HEIGHT for HERO only ---- */
-/* Used by Hero section to handle dynamic address bar on mobile */
-/* All other sections use natural flow with padding */
+/* ---- VISUAL VIEWPORT HEIGHT for fallback ---- */
+/* --app-height is updated via VisualViewport API listener for older browsers */
+/* Modern browsers use 100dvh (dynamic viewport height) which handles address bar automatically */
 :root {
-  --app-height: 100vh;
+  --app-height: 100dvh;
 }
+
+/* Ensure html/body don't lock to ICB (Initial Containing Block) height */
+/* which would conflict with dynamic address bar resizing */

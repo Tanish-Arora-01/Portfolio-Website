@@ -79,6 +79,27 @@ const Contact = () => {
     }
   };
 
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 60, damping: 15 },
+    },
+  };
+
   return (
     <section
       name="contact"
@@ -88,59 +109,77 @@ const Contact = () => {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-screen-xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center w-full">
+      <div className="max-w-screen-xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-start w-full">
         {/* LEFT */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
           className="space-y-8"
         >
-          <h2 className="text-5xl font-bold text-white">
+          <motion.h2
+            variants={itemVariants}
+            className="text-5xl font-bold text-white"
+          >
             Let's build something amazing.
-          </h2>
+          </motion.h2>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            <InfoCard
-              icon={<FaEnvelope />}
-              label="Email"
-              value="tanisharora1105@gmail.com"
-              href="mailto:tanisharora1105@gmail.com"
-            />
-            <InfoCard
-              icon={<FaPhoneAlt />}
-              label="Phone"
-              value="+91-9461113664"
-            />
-            <InfoCard
-              icon={<FaMapMarkerAlt />}
-              label="Location"
-              value="Chennai, India"
-            />
+            <motion.div variants={itemVariants}>
+              <InfoCard
+                icon={<FaEnvelope />}
+                label="Email"
+                value="tanisharora1105@gmail.com"
+                href="mailto:tanisharora1105@gmail.com"
+              />
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <InfoCard
+                icon={<FaPhoneAlt />}
+                label="Phone"
+                value="+91-9461113664"
+              />
+            </motion.div>
+            <motion.div variants={itemVariants}>
+              <InfoCard
+                icon={<FaMapMarkerAlt />}
+                label="Location"
+                value="Chennai, India"
+              />
+            </motion.div>
 
-            <SpotlightCard className="p-6 backdrop-blur-sm bg-white/5 border-white/15">
-              <div className="flex gap-4 mb-6">
-                <Social href="https://www.linkedin.com/in/tanish-arora-1105ta/">
-                  <FaLinkedin size={22} />
-                </Social>
-                <Social href="https://github.com/Tanish-Arora-01">
-                  <FaGithub size={22} />
-                </Social>
-              </div>
-              <a href="/resume_SDE.pdf" download>
-                <SpotlightButton className="px-5 py-3 text-sm">
-                  Download Resume <HiDownload />
-                </SpotlightButton>
-              </a>
-            </SpotlightCard>
+            <motion.div variants={itemVariants}>
+              <SpotlightCard className="p-6 backdrop-blur-sm bg-white/5 border-white/15 h-full">
+                <div className="flex gap-4 mb-6">
+                  <Social href="https://www.linkedin.com/in/tanish-arora-1105ta/">
+                    <FaLinkedin size={22} />
+                  </Social>
+                  <Social href="https://github.com/Tanish-Arora-01">
+                    <FaGithub size={22} />
+                  </Social>
+                </div>
+                <a href="/resume_SDE.pdf" download>
+                  <SpotlightButton className="px-5 py-3 text-sm w-full">
+                    Download Resume <HiDownload />
+                  </SpotlightButton>
+                </a>
+              </SpotlightCard>
+            </motion.div>
           </div>
         </motion.div>
 
         {/* RIGHT — FORM */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            type: "spring",
+            stiffness: 50,
+            damping: 20,
+            delay: 0.3,
+          }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           <div className="relative rounded-3xl p-[2px] bg-gradient-to-br from-white/20 via-white/5 to-transparent">
             <form
@@ -202,7 +241,7 @@ const Contact = () => {
 /* helpers unchanged */
 
 const InfoCard = ({ icon, label, value, href }) => (
-  <SpotlightCard className="p-6 backdrop-blur-sm bg-white/5 border-white/15">
+  <SpotlightCard className="p-6 backdrop-blur-sm bg-white/5 border-white/15 h-full">
     {href ? (
       <a href={href}>
         <Icon icon={icon} />

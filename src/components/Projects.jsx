@@ -66,8 +66,11 @@ const Projects = () => {
   ];
 
   return (
-    <section name="projects" className="w-full text-text py-20 relative z-10">
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center">
+    <section
+      name="projects"
+      className="w-full min-h-[var(--app-height)] text-text py-20 relative z-10 flex flex-col justify-center"
+    >
+      <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center h-full">
         {/* Heading */}
         <div className="pb-12">
           <motion.h2

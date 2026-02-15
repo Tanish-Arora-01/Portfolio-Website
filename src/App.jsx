@@ -12,7 +12,7 @@ function App() {
       {/* This must be outside the main div flow */}
       <PlasmaBackground />
 
-      <div className="relative z-10">
+      <div className="relative z-10 min-h-dvh">
         <Navbar />
         <Hero />
         <About />

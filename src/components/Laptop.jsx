@@ -6,14 +6,23 @@ import {
   useAnimations,
   OrbitControls,
   Html,
+  useTexture,
 } from "@react-three/drei";
 import { Box3, Vector3, MathUtils } from "three";
+import * as THREE from "three";
 
 function MacBookModel() {
   const { scene, animations } = useGLTF("/macbook.glb");
   const { actions, names } = useAnimations(animations, scene);
   const groupRef = useRef();
   const { camera, controls } = useThree();
+
+  // Load your custom wallpaper from the public folder
+  // Change "my-custom-wallpaper.jpg" to your actual image file name
+  const screenTexture = useTexture("/wallpaper.jpeg");
+
+  // If the image looks upside down, change this to true
+  screenTexture.flipY = true;
 
   useEffect(() => {
     scene.traverse((child) => {
@@ -25,6 +34,15 @@ function MacBookModel() {
           child.material.polygonOffset = false;
           child.material.precision = "highp";
           child.material.envMapIntensity = 1.5;
+          child.material.needsUpdate = true;
+        }
+
+        // Apply the wallpaper specifically to the screen mesh
+        if (child.name === "Object_7") {
+          child.material.map = screenTexture;
+          child.material.emissiveMap = screenTexture;
+          child.material.emissive = new THREE.Color(0xffffff);
+          child.material.emissiveIntensity = 0.8;
           child.material.needsUpdate = true;
         }
       }
@@ -53,21 +71,19 @@ function MacBookModel() {
       actions[names[0]].clampWhenFinished = true;
       actions[names[0]].setLoop(1, 1);
     }
-  }, [actions, names, scene, camera, controls]);
+  }, [actions, names, scene, camera, controls, screenTexture]);
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     if (!groupRef.current) return;
 
-    // --- 1. VERTICAL TILT (X-AXIS) ---
-    // UPDATED: Increased from PI/10 to PI/5 (approx 36 degrees)
-    // This tips the laptop forward more to show the "top" (keyboard).
+    // 1. VERTICAL TILT (X-AXIS)
     groupRef.current.rotation.x = Math.PI / 5 + Math.cos(t / 2) / 10;
 
-    // --- 2. FLOAT POSITION (Y-AXIS) ---
+    // 2. FLOAT POSITION (Y-AXIS)
     groupRef.current.position.y = -1.25 + Math.sin(t) * 0.15;
 
-    // --- 3. ROTATION ANGLE (Y-AXIS / LEFT-RIGHT) ---
+    // 3. ROTATION ANGLE (Y-AXIS / LEFT-RIGHT)
     const action = actions[names[0]];
     const startRotation = (-1 * Math.PI) / 10;
     const idleRotation = Math.sin(t * 0.3) * 0.08;
@@ -78,22 +94,19 @@ function MacBookModel() {
       const transitionStart = 0.8;
 
       if (progress < transitionStart) {
-        // Phase 1: Hold the left angle steady while opening
         groupRef.current.rotation.y = startRotation;
       } else {
-        // Phase 2: Smoothly blend from the left angle to the idle sway
         const blend = Math.min(
           1,
-          (progress - transitionStart) / (1 - transitionStart),
+          (progress - transitionStart) / (1 - transitionStart)
         );
         groupRef.current.rotation.y = MathUtils.lerp(
           startRotation,
           idleRotation,
-          blend,
+          blend
         );
       }
     } else {
-      // Fallback
       groupRef.current.rotation.y = idleRotation;
     }
   });
@@ -119,7 +132,7 @@ const Laptop = () => {
   if (isMobile) return null;
 
   return (
-    <div className="h-[650px] md:h-[820px] w-full">
+    <div className="h-[650px] md:h-[820px] w-full relative z-10">
       <Canvas
         dpr={[1, 2]}
         camera={{ position: [0, 1.4, 11], fov: 40 }}
@@ -137,7 +150,9 @@ const Laptop = () => {
         <Suspense
           fallback={
             <Html center>
-              <div className="text-[#38bdf8] animate-pulse">BOOTING...</div>
+              <div className="text-[#38bdf8] animate-pulse font-mono font-bold tracking-widest">
+                BOOTING...
+              </div>
             </Html>
           }
         >

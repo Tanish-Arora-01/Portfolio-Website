@@ -47,7 +47,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-accent text-lg font-semibold tracking-widest uppercase"
+            className="text-lg font-semibold tracking-widest uppercase bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent"
           >
             Hi, my name is
           </motion.p>

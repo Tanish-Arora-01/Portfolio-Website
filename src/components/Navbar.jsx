@@ -107,7 +107,7 @@ const Navbar = () => {
     <div
       className={`
         fixed top-0 left-0 right-0 z-50
-        transition-all duration-500
+        transition-[transform,opacity] duration-500
         ${hidden ? "-translate-y-24 opacity-0" : "translate-y-0 opacity-100"}
       `}
     >
@@ -196,7 +196,7 @@ const Navbar = () => {
                   onClick={() => handleNavClick(link.id)}
                   className={`
                     block px-6 py-2 rounded-full text-sm font-semibold
-                    cursor-pointer transition-all duration-300
+                    cursor-pointer transition-[color,transform,filter] duration-300
                     ${
                       activeTab === link.id
                         ? "text-white scale-110 drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]"

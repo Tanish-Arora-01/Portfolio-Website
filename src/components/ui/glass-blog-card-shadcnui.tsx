@@ -33,19 +33,26 @@ export function GlassBlogCard({
   return (
     <Dialog>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "200px" }}
-        transition={{ delay: index * 0.1, type: "spring", stiffness: 100, damping: 20 }}
+        viewport={{ once: true, margin: index < 2 ? "400px" : "200px" }}
+        transition={{
+          delay: index < 2 ? 0 : (index - 2) * 0.15 + 0.1,
+          type: "spring",
+          stiffness: index < 2 ? 80 : 60,
+          damping: index < 2 ? 16 : 14,
+        }}
         style={{ WebkitTransform: 'translateZ(0)' }}
         className={cn("w-full h-full will-change-[transform,opacity] transform-gpu backface-hidden", className)}
       >
-        <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/50 bg-card/30 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 p-0 m-0">
+        <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/50 bg-card/80 transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 p-0 m-0">
           {/* Image Section */}
           <div className="relative w-full aspect-video overflow-hidden shrink-0 bg-muted">
-            <motion.img
+            <img
               src={image}
               alt={title}
+              fetchPriority="high"
+              decoding="async"
               className="absolute inset-0 h-full w-full object-cover m-0 p-0 transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-60 pointer-events-none" />
@@ -116,9 +123,9 @@ export function GlassBlogCard({
           </div>
 
           {/* Content Section (Truncated for Grid) */}
-          <div className="flex flex-col gap-4 p-5 grow">
+          <div className="flex flex-col gap-3 p-4 grow">
             <div className="space-y-2 grow">
-              <h3 className="text-xl font-semibold leading-tight tracking-tight text-foreground transition-colors group-hover:text-primary">
+              <h3 className="text-lg font-semibold leading-tight tracking-tight text-foreground transition-colors group-hover:text-primary">
                 {title}
               </h3>
               {/* line-clamp-3 keeps the grid uniform */}
@@ -128,19 +135,8 @@ export function GlassBlogCard({
             </div>
 
             {/* Author/Date Footer */}
-            <div className="flex items-center justify-between border-t border-border/50 pt-4 mt-auto">
-              <div className="flex items-center gap-2">
-                <Avatar className="h-8 w-8 border border-border/50">
-                  <AvatarImage src={author.avatar} alt={author.name} />
-                  <AvatarFallback>{author.name[0]}</AvatarFallback>
-                </Avatar>
-                <div className="flex flex-col text-xs">
-                  <span className="font-medium text-foreground">
-                    {author.name}
-                  </span>
-                  <span className="text-muted-foreground">{date}</span>
-                </div>
-              </div>
+            <div className="flex items-center justify-between border-t border-border/50 pt-3 mt-auto">
+              <span className="text-xs text-muted-foreground">{date}</span>
             </div>
           </div>
         </Card>

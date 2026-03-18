@@ -97,12 +97,12 @@ const Hero = () => {
             </Link>
 
             {/* Glass Social Dock */}
-            <div className="flex gap-4 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md">
+            <div className="flex gap-4 px-6 py-3 rounded-2xl bg-white/10 border border-white/10">
               <a
                 href="https://github.com/Tanish-Arora-01"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-[color,transform] duration-300"
               >
                 <FaGithub size={22} />
               </a>
@@ -110,7 +110,7 @@ const Hero = () => {
                 href="https://leetcode.com/u/Tanish_1011/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-[color,transform] duration-300"
               >
                 <SiLeetcode size={22} />
               </a>
@@ -118,7 +118,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/tanish-arora-1105ta"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-all duration-300"
+                className="text-gray-400 hover:text-white hover:scale-110 transition-[color,transform] duration-300"
               >
                 <FaLinkedin size={22} />
               </a>

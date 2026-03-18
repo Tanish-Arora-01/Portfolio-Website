@@ -92,9 +92,9 @@ const Skills = () => {
               key={category.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "100px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="h-full"
+              className="h-full transform-gpu"
             >
               <SpotlightCard className="p-8 h-full flex flex-col">
                 {/* Category Header */}
@@ -110,11 +110,8 @@ const Skills = () => {
                 {/* Skill Tags Container */}
                 <div className="flex flex-wrap gap-3">
                   {category.skills.map((skill, i) => (
-                    <motion.div
+                    <div
                       key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
                       className="group relative"
                     >
                       {/* Glow Effect behind tag */}
@@ -124,7 +121,7 @@ const Skills = () => {
                       <div className="relative px-4 py-2 bg-gray-900 border border-white/10 rounded-full text-gray-300 text-sm font-medium hover:text-white hover:border-[#38bdf8]/50 transition-colors cursor-default">
                         {skill}
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </SpotlightCard>

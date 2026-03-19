@@ -35,17 +35,16 @@ export function GlassBlogCard({
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: index < 2 ? "400px" : "200px" }}
+        viewport={{ once: true, margin: "200px" }}
         transition={{
-          delay: index < 2 ? 0 : (index - 2) * 0.15 + 0.1,
+          delay: index * 0.15,
           type: "spring",
-          stiffness: index < 2 ? 80 : 60,
-          damping: index < 2 ? 16 : 14,
+          stiffness: 80,
+          damping: 14,
         }}
-        style={{ WebkitTransform: 'translateZ(0)' }}
         className={cn("w-full h-full will-change-[transform,opacity] transform-gpu backface-hidden", className)}
       >
-        <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/50 bg-card/80 transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 p-0 m-0">
+        <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/50 bg-[#0f172a] transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 p-0 m-0">
           {/* Image Section */}
           <div className="relative w-full aspect-video overflow-hidden shrink-0 bg-muted">
             <img
@@ -79,7 +78,7 @@ export function GlassBlogCard({
             </div>
 
             {/* Hover Overlay Actions (Now with 3 Buttons) */}
-            <div className="absolute inset-0 flex items-center justify-center gap-3 bg-background/60 backdrop-blur-[2px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <div className="absolute inset-0 flex flex-wrap content-center items-center justify-center gap-2 p-2 bg-background/60 backdrop-blur-[2px] opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               {/* 1. Details Button (Triggers Dialog) */}
               <DialogTrigger asChild>
                 <motion.button

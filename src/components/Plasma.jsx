@@ -46,7 +46,7 @@ void mainImage(out vec4 o, vec2 C) {
   float i, d, z, T = iTime * uSpeed * uDirection;
   vec3 O, p, S;
 
-  for (vec2 r = iResolution.xy, Q; ++i < 60.; O += o.w/d*o.xyz) {
+  for (vec2 r = iResolution.xy, Q; ++i < 40.; O += o.w/d*o.xyz) {
     p = z*normalize(vec3(C-.5*r,r.y)); 
     p.z -= 4.; 
     S = p;
@@ -107,8 +107,7 @@ export const Plasma = ({
       const renderer = new Renderer({
         alpha: false, // 🔥 CRITICAL
         premultipliedAlpha: false, // 🔥 CRITICAL
-        antialias: false,
-        dpr: Math.min(window.devicePixelRatio || 1, 2),
+        dpr: 0.75, // Lock to sub-native resolution to save massive fill-rate on the heavy shader
       });
 
       const gl = renderer.gl;

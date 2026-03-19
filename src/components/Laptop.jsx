@@ -1,4 +1,5 @@
 import React, { Suspense, useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import {
   Environment,
@@ -32,8 +33,8 @@ function MacBookModel() {
 
         if (child.material) {
           child.material.polygonOffset = false;
-          child.material.precision = "highp";
-          child.material.envMapIntensity = 1.5;
+          child.material.precision = "mediump";
+          child.material.envMapIntensity = 1.0;
           child.material.needsUpdate = true;
         }
 
@@ -43,6 +44,7 @@ function MacBookModel() {
           child.material.emissiveMap = screenTexture;
           child.material.emissive = new THREE.Color(0xffffff);
           child.material.emissiveIntensity = 0.8;
+          child.material.precision = "mediump";
           child.material.needsUpdate = true;
         }
       }
@@ -119,6 +121,8 @@ function MacBookModel() {
 }
 
 const Laptop = () => {
+  const wrapperRef = useRef(null);
+  const isInView = useInView(wrapperRef, { margin: "200px" });
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -132,9 +136,10 @@ const Laptop = () => {
   if (isMobile) return null;
 
   return (
-    <div className="h-[650px] md:h-[820px] w-full relative z-10">
+    <div ref={wrapperRef} className="h-[650px] md:h-[820px] w-full relative z-10">
       <Canvas
-        dpr={[1, 2]}
+        frameloop={isInView ? "always" : "demand"}
+        dpr={[1, 1.5]}
         camera={{ position: [0, 1.4, 11], fov: 40 }}
         gl={{
           antialias: true,
@@ -142,10 +147,9 @@ const Laptop = () => {
           powerPreference: "high-performance",
         }}
       >
-        <Environment preset="city" />
+        <Environment preset="city" resolution={64} />
         <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 10, 5]} intensity={1.5} />
-        <pointLight position={[0, -1, 2]} intensity={2} color="#38bdf8" />
+        <directionalLight position={[-5, 10, 5]} intensity={1.5} />
 
         <Suspense
           fallback={

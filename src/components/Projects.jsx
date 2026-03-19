@@ -11,7 +11,7 @@ const Projects = () => {
         "Architected a real-time, sub-second AI moderation gateway. Features a deterministic Redis pre-filter that intercepts 70% of invalid traffic to slash LLM costs, and ultra-fast FAISS semantic search.",
       tech: ["FastAPI", "Node.js", "Redis", "FAISS", "Celery", "PostgreSQL"],
       // Point this to your actual image file name
-      image: "/projects/1.webp",
+      image: "/projects/1.jpg",
       date: "Feb 2026",
       github: "https://github.com/Tanish-Arora-01/Common-Implementation",
       demo: "https://common-i72m.vercel.app/",
@@ -24,7 +24,7 @@ const Projects = () => {
       excerpt:
         "A predictive, offline-first machine learning pipeline tracking real-time cognitive load. Captures telemetry via Electron and uses XGBoost and ARIMA models to forecast user burnout.",
       tech: ["Electron", "React", "Python", "XGBoost", "SQLite"],
-      image: "/projects/2.webp",
+      image: "/projects/2.jpg",
       date: "Jan 2026",
       github: "https://github.com/Tanish-Arora-01/Pulse-Grid",
       demo: "#",
@@ -37,7 +37,7 @@ const Projects = () => {
       excerpt:
         "AI-powered neurological screening engine for early dementia detection. Analyzes speech patterns using TensorFlow to deliver instant, clinical-grade risk assessments.",
       tech: ["React", "Flask", "TensorFlow", "MongoDB"],
-      image: "/projects/3.webp",
+      image: "/projects/3.jpg",
       date: "Nov 2025",
       github: "https://github.com/yourusername/neurosense",
       demo: "#",
@@ -50,7 +50,7 @@ const Projects = () => {
       excerpt:
         "Automated computer vision engine for document redaction. Deploys OpenCV within isolated AWS ECS containers to securely detect and mask PII (PAN/Aadhaar) at scale.",
       tech: ["Node.js", "AWS (ECS)", "OpenCV", "Docker"],
-      image: "/projects/4.webp",
+      image: "/projects/4.jpg",
       date: "Dec 2025",
       github: "https://github.com/Tanish-Arora-01/SecurePlus",
       demo: "#",
@@ -81,7 +81,7 @@ const Projects = () => {
         </div>
 
         {/* Project Grid — cards fill the available space */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-4">
           {projects.map((project, index) => (
             <GlassBlogCard key={project.id} {...project} tags={project.tech} index={index} />
           ))}

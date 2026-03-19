@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
@@ -42,52 +41,42 @@ const Hero = () => {
       >
         {/* TEXT SIDE */}
         <div className="w-full lg:w-1/2 mt-20 md:mt-0">
-          {/* Original Text Styles Preserved */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-lg font-semibold tracking-widest uppercase bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent"
+          {/* Original Text Styles Preserved, Animated via CSS */}
+          <p
+            style={{ animation: 'fadeSlideUp 0.6s ease forwards' }}
+            className="opacity-0 text-lg font-semibold tracking-widest uppercase bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent"
           >
             Hi, my name is
-          </motion.p>
+          </p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="text-5xl sm:text-8xl font-bold text-white leading-tight mb-2 drop-shadow-[0_0_25px_rgba(168,85,247,0.25)]"
+          <h1
+            style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.15s' }}
+            className="opacity-0 text-5xl sm:text-8xl font-bold text-white leading-tight mb-2 drop-shadow-[0_0_25px_rgba(168,85,247,0.25)]"
           >
             Tanish Arora
-          </motion.h1>
+          </h1>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="text-3xl sm:text-5xl font-bold text-gray-400 mb-6"
+          <h2
+            style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.3s' }}
+            className="opacity-0 text-3xl sm:text-5xl font-bold text-gray-400 mb-6"
           >
             Full Stack Developer
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-gray-200 py-2 max-w-lg text-lg mb-8 leading-relaxed"
+          <p
+            style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.6s' }}
+            className="opacity-0 text-gray-200 py-2 max-w-lg text-lg mb-8 leading-relaxed"
           >
             Computer Science Engineering student at{" "}
             <span className="text-white font-semibold">VIT Chennai</span>.
             Passionate about Development, System Design, DevOps, scalable cloud
             systems, and building high-performance web experiences.
-          </motion.p>
+          </p>
 
           {/* NEW BUTTON FORMAT: Action Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
-            className="flex flex-col sm:flex-row gap-6 items-start sm:items-center"
+          <div
+            style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.7s' }}
+            className="opacity-0 flex flex-col sm:flex-row gap-6 items-start sm:items-center"
           >
             <Link to="projects" smooth duration={600}>
               <SpotlightButton className="px-8 py-4 text-base font-medium">
@@ -123,18 +112,16 @@ const Hero = () => {
                 <FaLinkedin size={22} />
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        {/* 3D SIDE (Unchanged) */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, x: 40 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="hidden lg:flex lg:w-1/2 h-[520px] xl:h-full justify-center items-center"
+        {/* 3D SIDE (Unchanged layout, but CSS animated) */}
+        <div
+          style={{ animation: 'fadeScaleIn 0.8s ease forwards', animationDelay: '0.4s' }}
+          className="opacity-0 hidden lg:flex lg:w-1/2 h-[520px] xl:h-full justify-center items-center"
         >
           <Laptop />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

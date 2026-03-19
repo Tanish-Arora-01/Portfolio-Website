@@ -1,0 +1,67 @@
+﻿
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\Contact.jsx
+  11:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u            no-unused-vars
+  17:10  error  'sent' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  17:16  error  'setSent' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\Laptop.jsx
+   26:3  error  Error: This value cannot be modified
+
+Modifying a value returned from a hook is not allowed. Consider moving the modification into the hook where the value is constructed.
+
+  24 |
+  25 |   // If the image looks upside down, change this to true
+> 26 |   screenTexture.flipY = true;
+     |   ^^^^^^^^^^^^^ value cannot be modified
+  27 |
+  28 |   useEffect(() => {
+  29 |     scene.traverse((child) => {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         react-hooks/immutability
+   73:7  error  Error: This value cannot be modified
+
+Modifying a value returned from a hook is not allowed. Consider moving the modification into the hook where the value is constructed.
+
+  71 |     if (actions[names[0]]) {
+  72 |       actions[names[0]].reset().fadeIn(0.5).play();
+> 73 |       actions[names[0]].clampWhenFinished = true;
+     |       ^^^^^^^^^^^^^^^^^ `actions` cannot be modified
+  74 |       actions[names[0]].setLoop(1, 1);
+  75 |     }
+  76 |   }, [actions, names, scene, camera, controls, screenTexture]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react-hooks/immutability
+  130:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  128 |   useEffect(() => {
+  129 |     const mediaQuery = window.matchMedia("(max-width: 768px)");
+> 130 |     setIsMobile(mediaQuery.matches);
+      |     ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  131 |     const handleResize = (event) => setIsMobile(event.matches);
+  132 |     mediaQuery.addEventListener("change", handleResize);
+  133 |     return () => mediaQuery.removeEventListener("change", handleResize);  react-hooks/set-state-in-effect
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\Navbar.jsx
+  42:6  warning  React Hook useEffect has a missing dependency: 'links'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\Plasma.jsx
+   95:9  error    'mousePos' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                      no-unused-vars
+  165:7  error    'raf' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                           no-unused-vars
+  174:6  warning  React Hook useEffect has missing dependencies: 'color', 'direction', 'mouseInteractive', 'opacity', 'scale', and 'speed'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\Projects.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\Skills.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\src\components\ui\glass-project-card.jsx
+  13:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\tanis\OneDrive\Desktop\portfolio\Portfolio_\vite.config.js
+  9:25  error  '__dirname' is not defined  no-undef
+
+Γ£û 14 problems (12 errors, 2 warnings)
+

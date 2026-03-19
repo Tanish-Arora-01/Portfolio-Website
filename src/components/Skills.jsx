@@ -1,14 +1,15 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaCode, FaServer, FaCloud, FaBrain, FaTools } from "react-icons/fa";
-import SpotlightCard from "./SpotlightCard";
+import { Code2, Server, BrainCircuit, Database, CloudCog, Wrench } from "lucide-react";
+import { RevealSkillCard } from "./ui/RevealSkillCard";
 
 const Skills = () => {
   const skillCategories = [
     {
       id: 1,
       title: "Languages",
-      icon: <FaCode size={24} />,
+      icon: <Code2 size={24} strokeWidth={1.5} />,
+      accent: "#6366f1", // indigo
       skills: [
         "JavaScript",
         "TypeScript",
@@ -21,7 +22,8 @@ const Skills = () => {
     {
       id: 2,
       title: "Frameworks & Libraries",
-      icon: <FaServer size={24} />,
+      icon: <Server size={24} strokeWidth={1.5} />,
+      accent: "#818cf8", // lighter indigo
       skills: [
         "React",
         "Node.js",
@@ -35,7 +37,8 @@ const Skills = () => {
     {
       id: 3,
       title: "Data & Machine Learning",
-      icon: <FaBrain size={24} />,
+      icon: <BrainCircuit size={24} strokeWidth={1.5} />,
+      accent: "#8b5cf6", // violet
       skills: [
         "FAISS",
         "Scikit-learn",
@@ -49,7 +52,8 @@ const Skills = () => {
     {
       id: 4,
       title: "Databases & Cache",
-      icon: <FaServer size={24} />,
+      icon: <Database size={24} strokeWidth={1.5} />,
+      accent: "#7c3aed", // deep violet
       skills: [
         "PostgreSQL",
         "MongoDB",
@@ -60,7 +64,8 @@ const Skills = () => {
     {
       id: 5,
       title: "DevOps & Architecture",
-      icon: <FaCloud size={24} />,
+      icon: <CloudCog size={24} strokeWidth={1.5} />,
+      accent: "#4f46e5", // deep indigo
       skills: [
         "AWS (EC2, ECS, ECR, ALB)",
         "Docker",
@@ -73,7 +78,8 @@ const Skills = () => {
     {
       id: 6,
       title: "Developer Tools",
-      icon: <FaTools size={24} />,
+      icon: <Wrench size={24} strokeWidth={1.5} />,
+      accent: "#6d28d9", // purple
       skills: [
         "Git / GitHub",
         "VS Code",
@@ -107,7 +113,7 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Spotlight Grid */}
+        {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (
             <motion.div
@@ -119,35 +125,12 @@ const Skills = () => {
               whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
               className="h-full transform-gpu cursor-pointer"
             >
-              <SpotlightCard className="p-8 h-full flex flex-col">
-                {/* Category Header */}
-                <div className="flex items-center gap-4 mb-6 border-b border-black/10 pb-4">
-                  <span className="text-indigo-600 bg-indigo-500/10 p-3 rounded-xl border border-indigo-500/20">
-                    {category.icon}
-                  </span>
-                  <h3 className="text-2xl font-medium text-slate-900 tracking-wide">
-                    {category.title}
-                  </h3>
-                </div>
-
-                {/* Skill Tags Container */}
-                <div className="flex flex-wrap gap-3">
-                  {category.skills.map((skill, i) => (
-                    <div
-                      key={skill}
-                      className="group relative"
-                    >
-                      {/* Glow Effect behind tag */}
-                      <div className="absolute -inset-0.5 bg-indigo-400/20 rounded-full blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
-
-                      {/* The Tag Itself */}
-                      <div className="relative px-4 py-2 bg-white/50 backdrop-blur-md border border-black/5 rounded-full text-slate-700 text-sm font-light hover:text-slate-900 hover:bg-white/70 hover:border-indigo-400/40 transition duration-300 cursor-default">
-                        {skill}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </SpotlightCard>
+              <RevealSkillCard 
+                title={category.title}
+                icon={category.icon}
+                skills={category.skills}
+                accent={category.accent}
+              />
             </motion.div>
           ))}
         </div>

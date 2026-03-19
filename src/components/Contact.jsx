@@ -166,11 +166,10 @@ const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`px-4 py-3 rounded-xl text-sm font-medium ${
-                      flash.type === "success"
+                    className={`px-4 py-3 rounded-xl text-sm font-medium ${flash.type === "success"
                         ? "bg-green-500/10 text-green-400 border border-green-500/20"
                         : "bg-red-500/10 text-red-400 border border-red-500/20"
-                    }`}
+                      }`}
                   >
                     {flash.message}
                   </motion.div>

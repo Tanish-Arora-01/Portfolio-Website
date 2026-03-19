@@ -44,7 +44,7 @@ export function GlassBlogCard({
         }}
         className={cn("w-full h-full will-change-[transform,opacity] transform-gpu backface-hidden", className)}
       >
-        <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/50 bg-[#0f172a] transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 p-0 m-0">
+        <Card className="group relative h-full flex flex-col overflow-hidden rounded-2xl border-border/50 bg-card/30 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 p-0 m-0">
           {/* Image Section */}
           <div className="relative w-full aspect-video overflow-hidden shrink-0 bg-muted">
             <img

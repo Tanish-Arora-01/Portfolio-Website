@@ -6,9 +6,9 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Commons – AI Moderation Gateway",
+      title: "Commons – AI Moderation Chat Application",
       excerpt:
-        "Architected a real-time, sub-second AI moderation gateway. Features a deterministic Redis pre-filter that intercepts 70% of invalid traffic to slash LLM costs, and ultra-fast FAISS semantic search.",
+        "Architected a real-time, sub-second AI moderation chat application. Features a deterministic Redis pre-filter that intercepts 70% of invalid traffic to slash LLM costs, and ultra-fast FAISS semantic search.",
       tech: ["FastAPI", "Node.js", "Redis", "FAISS", "Celery", "PostgreSQL"],
       // Point this to your actual image file name
       image: "/projects/1.jpg",

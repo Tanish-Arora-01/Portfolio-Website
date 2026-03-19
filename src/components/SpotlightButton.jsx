@@ -19,11 +19,11 @@ const SpotlightButton = ({ children, className = "", ...props }) => {
       onMouseLeave={() => setOpacity(0)}
       className={`
         relative overflow-hidden rounded-full
-        backdrop-blur-sm bg-white/5
-        border border-white/20
-        text-white font-semibold
+        backdrop-blur-md bg-white/60
+        border border-black/10
+        text-slate-900 font-semibold
         transition-all duration-300
-        hover:bg-white/10 hover:border-white/40
+        hover:bg-white/80 hover:border-black/20 hover:shadow-lg hover:shadow-indigo-500/10
         ${className}
       `}
       {...props}
@@ -33,7 +33,7 @@ const SpotlightButton = ({ children, className = "", ...props }) => {
         className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity,
-          background: `radial-gradient(160px circle at ${pos.x}px ${pos.y}px, rgba(255,255,255,0.25), transparent 60%)`,
+          background: `radial-gradient(160px circle at ${pos.x}px ${pos.y}px, rgba(99,102,241,0.15), transparent 60%)`,
         }}
       />
 

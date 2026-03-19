@@ -1,4 +1,4 @@
-import Plasma from "./Plasma";
+import { Component } from "./gradient-backgrounds";
 
 function PlasmaBackground() {
   return (
@@ -35,14 +35,7 @@ function PlasmaBackground() {
           backfaceVisibility: "hidden",
         }}
       >
-        <Plasma
-          color="#b19eef"
-          speed={0.4}
-          direction="forward"
-          scale={1}
-          opacity={0.7}
-          mouseInteractive={false}
-        />
+        <Component />
       </div>
     </div>
   );

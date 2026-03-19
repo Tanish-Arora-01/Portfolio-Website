@@ -37,7 +37,7 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/50 duration-200 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 z-50 bg-black/30 backdrop-blur-sm duration-200 data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className,
       )}
       {...props}
@@ -68,10 +68,10 @@ function DialogContent({
         {showCloseButton && (
           <DialogPrimitive.Close data-slot="dialog-close" asChild>
             <button
-              className="absolute top-3 right-3 z-10 rounded-full bg-white/80 dark:bg-zinc-800/80 p-2 shadow-lg hover:bg-red-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-primary"
+              className="absolute top-4 right-4 z-10 rounded-full bg-white/90 p-2 shadow-md hover:bg-red-500 hover:text-white transition-colors focus:outline-none"
               aria-label="Close dialog"
             >
-              <i className="fas fa-times w-6 h-6" />
+              <XIcon className="w-4 h-4" />
             </button>
           </DialogPrimitive.Close>
         )}

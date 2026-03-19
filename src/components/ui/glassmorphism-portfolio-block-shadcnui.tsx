@@ -116,9 +116,9 @@ export function GlassmorphismPortfolioBlock() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl"
+                  className="text-2xl font-semibold tracking-tight md:text-3xl"
                 >
-                  Tanish Arora, Full Stack Developer & Cloud Enthusiast
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500">Tanish Arora, Full Stack Developer &amp; Cloud Enthusiast</span>
                 </motion.h2>
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ export function GlassmorphismPortfolioBlock() {
                     VIT Chennai
                   </span>{" "}
                   (2023–2027) with a{" "}
-                  <span className="text-[#38bdf8] font-bold">
+                  <span className="text-indigo-600 font-bold">
                     CGPA of 8.69
                   </span>
                   . Building production-ready full-stack applications with a
@@ -149,12 +149,12 @@ export function GlassmorphismPortfolioBlock() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: 0.1 * index }}
-                    whileHover={{ y: -4 }}
-                    className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-5 backdrop-blur transition-all hover:border-border/60 hover:shadow-lg"
+                    whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.3, ease: "easeOut" } }}
+                    className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-5 backdrop-blur transition-all hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5 cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
                     <div className="relative space-y-2">
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#38bdf8]">
+                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-indigo-600">
                         {item.title}
                       </p>
                       <p className="text-sm leading-relaxed text-foreground/70">
@@ -189,7 +189,7 @@ export function GlassmorphismPortfolioBlock() {
 
             {/* Right column - Profile card */}
             <div className="relative">
-              <div className="absolute inset-0 rounded-[32px] bg-gradient-to-b from-[#38bdf8]/15 via-transparent to-transparent blur-3xl" />
+              <div className="absolute inset-0 rounded-[32px] bg-gradient-to-b from-indigo-500/15 via-transparent to-transparent blur-3xl" />
               <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] border border-border/50 bg-background/60 p-8 backdrop-blur-xl">
                 <div className="flex flex-col items-center text-center">
                   {/* Avatar with glow */}
@@ -200,11 +200,11 @@ export function GlassmorphismPortfolioBlock() {
                     transition={{ duration: 0.5 }}
                     className="relative mb-6"
                   >
-                    <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#38bdf8]/20 blur-2xl" />
+                    <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/20 blur-2xl" />
                     <img
                       src="https://github.com/Tanish-Arora-01.png"
                       alt="Tanish Arora"
-                      className="relative h-32 w-32 rounded-full border border-border/40 object-cover shadow-[0_25px_60px_rgba(15,23,42,0.3)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+                      className="relative h-32 w-32 rounded-full border border-border/40 object-cover"
                     />
                   </motion.div>
 
@@ -252,7 +252,7 @@ export function GlassmorphismPortfolioBlock() {
                         key={stat.label}
                         className="rounded-xl border border-border/40 bg-background/50 px-3 py-3 text-center backdrop-blur"
                       >
-                        <p className="text-lg font-bold text-[#38bdf8]">
+                        <p className="text-lg font-bold text-indigo-600">
                           {stat.value}
                         </p>
                         <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">
@@ -280,12 +280,12 @@ export function GlassmorphismPortfolioBlock() {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center justify-between rounded-2xl border border-border/40 bg-background/70 px-4 py-3 text-left transition-all hover:-translate-y-0.5 hover:border-border/60 hover:bg-background/80 hover:shadow-md"
+                        className="group flex items-center justify-between rounded-2xl border border-border/40 bg-background/70 px-4 py-3 text-left transition-all hover:-translate-y-1 hover:border-indigo-500/30 hover:bg-background/80 hover:shadow-lg hover:shadow-indigo-500/5"
                         whileHover={{ scale: 1.01 }}
                         whileTap={{ scale: 0.985 }}
                       >
                         <div className="flex items-center gap-3">
-                          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-background/70 text-foreground/80 shadow-[0_10px_30px_rgba(15,23,42,0.2)] transition-all group-hover:shadow-[0_10px_30px_rgba(15,23,42,0.3)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)] dark:group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-border/40 bg-background/70 text-foreground/80 transition-all">
                             <Icon className="h-4 w-4" />
                           </span>
                           <div>

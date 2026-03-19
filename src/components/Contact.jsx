@@ -97,19 +97,19 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="relative rounded-[2rem] overflow-hidden bg-[#0a0a0a] border border-white/10 shadow-2xl"
+          className="relative rounded-[2rem] overflow-hidden bg-white/60 backdrop-blur-xl border border-black/10 shadow-xl"
         >
           <div className="grid lg:grid-cols-5 min-h-[600px]">
             {/* LEFT COLUMN: Contact Info */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-gray-900 to-black p-10 flex flex-col justify-between relative overflow-hidden">
+            <div className="lg:col-span-2 bg-gradient-to-br from-slate-800 to-slate-900 p-10 flex flex-col justify-between relative overflow-hidden">
               {/* Subtle pattern overlay */}
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
+              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
 
               <div className="relative z-10 space-y-2">
                 <h2 className="text-4xl font-bold text-white tracking-tight">
                   Let's Talk
                 </h2>
-                <p className="text-gray-400 text-lg">
+                <p className="text-slate-300 text-lg">
                   Have a project in mind or just want to say hi? I'm always open
                   to discussing new ideas.
                 </p>
@@ -156,7 +156,7 @@ const Contact = () => {
             </div>
 
             {/* RIGHT COLUMN: The Form */}
-            <div className="lg:col-span-3 bg-white/[0.02] p-8 md:p-12 relative">
+            <div className="lg:col-span-3 bg-white/30 backdrop-blur-md p-8 md:p-12 relative">
               <form
                 onSubmit={handleSubmit}
                 className="space-y-6 max-w-lg mx-auto lg:mx-0"
@@ -207,7 +207,7 @@ const Contact = () => {
                     rows="4"
                     required
                     placeholder="Tell me about your project..."
-                    className="w-full bg-white/5 border border-transparent rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:bg-white/10 focus:border-accent/30 focus:ring-1 focus:ring-accent/30 transition-all outline-none resize-none"
+                    className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:bg-white/80 focus:border-indigo-400/50 focus:ring-1 focus:ring-indigo-400/30 transition-all outline-none resize-none"
                   />
                 </div>
 
@@ -276,7 +276,7 @@ const InputGroup = ({
   defaultValue,
 }) => (
   <div className="w-full">
-    <label className="block text-sm font-medium text-gray-400 mb-2">
+    <label className="block text-sm font-medium text-slate-600 mb-2">
       {label}
     </label>
     <input
@@ -285,7 +285,7 @@ const InputGroup = ({
       required
       defaultValue={defaultValue}
       placeholder={placeholder}
-      className="w-full bg-white/5 border border-transparent rounded-xl px-4 py-3 text-white placeholder-gray-600 focus:bg-white/10 focus:border-accent/30 focus:ring-1 focus:ring-accent/30 transition-all outline-none"
+      className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:bg-white/80 focus:border-indigo-400/50 focus:ring-1 focus:ring-indigo-400/30 transition-all outline-none"
     />
   </div>
 );

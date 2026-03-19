@@ -44,33 +44,33 @@ const Hero = () => {
           {/* Original Text Styles Preserved, Animated via CSS */}
           <p
             style={{ animation: 'fadeSlideUp 0.6s ease forwards' }}
-            className="opacity-0 text-lg font-semibold tracking-widest uppercase bg-gradient-to-r from-[#38bdf8] via-[#818cf8] to-[#a855f7] bg-clip-text text-transparent"
+            className="opacity-0 text-sm md:text-md font-medium tracking-[0.2em] uppercase text-indigo-600"
           >
             Hi, my name is
           </p>
 
           <h1
             style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.15s' }}
-            className="opacity-0 text-5xl sm:text-8xl font-bold text-white leading-tight mb-2 drop-shadow-[0_0_25px_rgba(168,85,247,0.25)]"
+            className="opacity-0 text-5xl sm:text-8xl font-semibold tracking-tighter leading-tight mb-2"
           >
-            Tanish Arora
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2d1b69] via-[#4338ca] to-[#6366f1]">Tanish Arora</span>
           </h1>
 
           <h2
             style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.3s' }}
-            className="opacity-0 text-3xl sm:text-5xl font-bold text-gray-400 mb-6"
+            className="opacity-0 text-2xl sm:text-4xl font-light tracking-tight text-slate-500 mb-6"
           >
             Full Stack Developer
           </h2>
 
           <p
             style={{ animation: 'fadeSlideUp 0.7s ease forwards', animationDelay: '0.6s' }}
-            className="opacity-0 text-gray-200 py-2 max-w-lg text-lg mb-8 leading-relaxed"
+            className="opacity-0 text-slate-600 py-2 max-w-lg text-lg font-light mb-8 leading-relaxed"
           >
             Computer Science Engineering student at{" "}
-            <span className="text-white font-semibold">VIT Chennai</span>.
+            <span className="text-slate-900 font-medium">VIT Chennai</span>.
             Passionate about Development, System Design, DevOps, scalable cloud
-            systems, and building high-performance web experiences.
+            systems, and building minimalistic high-performance web experiences.
           </p>
 
           {/* NEW BUTTON FORMAT: Action Row */}
@@ -86,12 +86,12 @@ const Hero = () => {
             </Link>
 
             {/* Glass Social Dock */}
-            <div className="flex gap-4 px-6 py-3 rounded-2xl bg-white/10 border border-white/10">
+            <div className="flex gap-4 px-6 py-3 rounded-2xl bg-black/5 border border-black/10">
               <a
                 href="https://github.com/Tanish-Arora-01"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-[color,transform] duration-300"
+                className="text-slate-500 hover:text-slate-900 hover:scale-110 transition-[color,transform] duration-300"
               >
                 <FaGithub size={22} />
               </a>
@@ -99,7 +99,7 @@ const Hero = () => {
                 href="https://leetcode.com/u/Tanish_1011/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-[color,transform] duration-300"
+                className="text-slate-500 hover:text-slate-900 hover:scale-110 transition-[color,transform] duration-300"
               >
                 <SiLeetcode size={22} />
               </a>
@@ -107,7 +107,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/tanish-arora-1105ta"
                 target="_blank"
                 rel="noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-110 transition-[color,transform] duration-300"
+                className="text-slate-500 hover:text-slate-900 hover:scale-110 transition-[color,transform] duration-300"
               >
                 <FaLinkedin size={22} />
               </a>

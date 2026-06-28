@@ -6,6 +6,7 @@ import {
   FaPhoneAlt,
   FaMapMarkerAlt,
   FaPaperPlane,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 import { motion } from "framer-motion";
@@ -162,11 +163,11 @@ const Contact = () => {
               <div className="block lg:hidden mb-6 text-center space-y-3">
                 <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Let's Talk</h2>
                 <div className="flex justify-center gap-3">
-                  <a href="mailto:tanisharora1105@gmail.com" className="p-3 bg-white/60 text-indigo-600 rounded-full hover:bg-indigo-100 transition shadow-sm"><FaEnvelope /></a>
-                  <a href="tel:+919461113664" className="p-3 bg-white/60 text-indigo-600 rounded-full hover:bg-indigo-100 transition shadow-sm"><FaPhoneAlt /></a>
-                  <a href="https://github.com/Tanish-Arora-01" className="p-3 bg-white/60 text-slate-800 rounded-full hover:bg-slate-200 transition shadow-sm"><FaGithub /></a>
-                  <a href="https://www.linkedin.com/in/tanish-arora-1105ta/" className="p-3 bg-white/60 text-blue-700 rounded-full hover:bg-blue-100 transition shadow-sm"><FaLinkedin /></a>
-                  <a href="/resume_SDE.pdf" download className="p-3 bg-white/60 text-indigo-600 rounded-full hover:bg-indigo-100 transition shadow-sm"><HiDownload /></a>
+                  <a href="mailto:tanisharora1105@gmail.com" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-indigo-700 rounded-full hover:bg-white/40 transition shadow-sm"><FaEnvelope /></a>
+                  <a href="https://wa.me/919461113664" target="_blank" rel="noreferrer" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-emerald-600 rounded-full hover:bg-white/40 transition shadow-sm"><FaWhatsapp /></a>
+                  <a href="https://github.com/Tanish-Arora-01" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-slate-800 rounded-full hover:bg-white/40 transition shadow-sm"><FaGithub /></a>
+                  <a href="https://www.linkedin.com/in/tanish-arora-1105ta/" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-blue-700 rounded-full hover:bg-white/40 transition shadow-sm"><FaLinkedin /></a>
+                  <a href="/resume_SDE.pdf" download className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-indigo-700 rounded-full hover:bg-white/40 transition shadow-sm"><HiDownload /></a>
                 </div>
               </div>
 

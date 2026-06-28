@@ -55,7 +55,7 @@ export function GlassBlogCard({
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover m-0 p-0 transition-transform duration-500 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/90 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-60 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-60 pointer-events-none" />
 
             {/* Tags (Bottom Left) */}
             <div className="absolute bottom-3 left-3 flex flex-wrap gap-2 pr-3 pointer-events-none">
@@ -78,8 +78,8 @@ export function GlassBlogCard({
               )}
             </div>
 
-            {/* Hover Overlay Actions (Now with 3 Buttons) */}
-            <div className="absolute inset-0 flex flex-wrap content-center items-center justify-center gap-2 p-2 bg-white/70 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            {/* Hover Overlay Actions (Desktop Only) */}
+            <div className="absolute inset-0 hidden md:flex flex-wrap content-center items-center justify-center gap-2 p-2 bg-white/70 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
               {/* 1. Details Button (Triggers Dialog) */}
               <DialogTrigger asChild>
                 <motion.button
@@ -132,6 +132,34 @@ export function GlassBlogCard({
               <p className="line-clamp-3 text-sm text-slate-600 leading-relaxed">
                 {excerpt}
               </p>
+            </div>
+
+            {/* Mobile Action Buttons */}
+            <div className="flex md:hidden items-center gap-2 mt-1 flex-wrap">
+              <DialogTrigger asChild>
+                <button className="flex items-center gap-1.5 rounded-md bg-slate-100 px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition-colors">
+                  <Info className="h-3.5 w-3.5" />
+                  Details
+                </button>
+              </DialogTrigger>
+
+              {!disableGithub && (
+                <a href={github} target="_blank" rel="noreferrer">
+                  <button className="flex items-center gap-1.5 rounded-md bg-slate-100 px-2.5 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-200 transition-colors">
+                    <Github className="h-3.5 w-3.5" />
+                    Code
+                  </button>
+                </a>
+              )}
+
+              {!demoDisabled && (
+                <a href={demo} target="_blank" rel="noreferrer">
+                  <button className="flex items-center gap-1.5 rounded-md bg-primary px-2.5 py-1.5 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    Demo
+                  </button>
+                </a>
+              )}
             </div>
 
             {/* Author/Date Footer */}

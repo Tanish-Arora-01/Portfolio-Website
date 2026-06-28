@@ -133,7 +133,7 @@ export function GlassmorphismPortfolioBlock() {
                   </span>{" "}
                   (2023–2027) with a{" "}
                   <span className="text-indigo-600 font-bold">
-                    CGPA of 8.69
+                    CGPA of 8.80
                   </span>
                   . Building production-ready full-stack applications with a
                   focus on writing scalable, maintainable systems.
@@ -244,7 +244,7 @@ export function GlassmorphismPortfolioBlock() {
                     className="mt-6 grid w-full grid-cols-3 gap-3"
                   >
                     {[
-                      { label: "CGPA", value: "8.69" },
+                      { label: "CGPA", value: "8.80" },
                       { label: "University", value: "VIT" },
                       { label: "Year", value: "2027" },
                     ].map((stat) => (

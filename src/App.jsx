@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero"; // We will build this next
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import PlasmaBackground from "./components/PlasmaBackground";
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <Hero />
         <About />
+        <Experience />
         <Skills />
         <Projects />
         <Contact />

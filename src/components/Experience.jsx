@@ -75,8 +75,8 @@ const Experience = () => {
             <motion.div 
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
               className="hidden lg:block absolute top-0 bottom-0 left-[17px] w-[2px] bg-gradient-to-b from-indigo-500 via-indigo-500/50 to-transparent origin-top"
             />
 
@@ -84,8 +84,8 @@ const Experience = () => {
             <motion.div 
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
               className="block lg:hidden absolute top-[17px] left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 via-indigo-500/50 to-transparent origin-left"
             />
 
@@ -95,10 +95,10 @@ const Experience = () => {
                 return (
                   <motion.div
                     key={exp.id}
-                    initial={{ opacity: 0, y: -15 }}
+                    initial={{ opacity: 0, y: -25 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.15, duration: 0.4, type: "spring", stiffness: 100 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ delay: 0.3 + (index * 0.4), duration: 0.8, type: "spring", stiffness: 70, damping: 15 }}
                     className={cn(
                       "flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-6 cursor-pointer group transition-opacity shrink-0 w-48 lg:w-auto snap-start",
                       isActive ? "opacity-100" : "opacity-50 hover:opacity-100"

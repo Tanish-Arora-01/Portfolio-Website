@@ -37,10 +37,18 @@ export function GlassBlogCard({
   const handleRef = useCallback((node) => {
     if (node) {
       scrollRef.current = node;
-      // Allow modal animation to settle before checking scroll height
-      setTimeout(() => {
-        setCanScroll(node.scrollHeight > node.clientHeight + 5);
-      }, 300);
+      
+      const checkScroll = () => {
+        if (!node) return;
+        // Require at least 24px of hidden content to trigger the scroll prompt
+        setCanScroll(node.scrollHeight > Math.ceil(node.clientHeight) + 24);
+      };
+
+      // Check height at different stages of the modal's entrance animation
+      checkScroll();
+      setTimeout(checkScroll, 150);
+      setTimeout(checkScroll, 300);
+      setTimeout(checkScroll, 500);
     }
   }, []);
 
@@ -290,7 +298,8 @@ export function GlassBlogCard({
                 }}
                 onClick={() => {
                   if (scrollRef.current) {
-                    scrollRef.current.scrollBy({ top: 200, behavior: "smooth" });
+                    // Scroll exactly to the bottom of the content, avoiding overscroll bounce
+                    scrollRef.current.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
                   }
                 }}
                 className="pointer-events-auto bg-indigo-600 text-white rounded-full p-2 shadow-lg shadow-indigo-500/30 border border-white/20 backdrop-blur-md cursor-pointer hover:bg-indigo-500 transition-colors"

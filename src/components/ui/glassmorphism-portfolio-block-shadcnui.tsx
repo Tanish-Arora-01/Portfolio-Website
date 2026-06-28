@@ -91,10 +91,10 @@ export function GlassmorphismPortfolioBlock() {
     >
       <div className="mx-auto max-w-screen-xl w-full">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative overflow-hidden rounded-3xl border border-border/50 bg-background/45 p-8 backdrop-blur-2xl md:p-12"
         >
           {/* Glass gradient overlay */}

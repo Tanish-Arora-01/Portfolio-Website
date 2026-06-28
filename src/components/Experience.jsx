@@ -231,7 +231,7 @@ const Experience = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                     </svg>
                   </motion.button>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-600/80">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100/90 px-3 py-1 rounded-full shadow-sm backdrop-blur-md border border-indigo-200/50">
                     Scroll me
                   </span>
                 </motion.div>

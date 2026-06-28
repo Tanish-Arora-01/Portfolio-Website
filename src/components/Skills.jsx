@@ -118,9 +118,9 @@ const Skills = () => {
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.id}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "80px" }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "50px" }}
               transition={{ duration: 0.5, delay: index * 0.12, type: "spring", stiffness: 80, damping: 14 }}
               whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
               className="h-full transform-gpu cursor-pointer"

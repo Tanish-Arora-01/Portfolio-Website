@@ -93,10 +93,10 @@ const Contact = () => {
 
       <div className="max-w-6xl w-full mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative rounded-[2rem] overflow-hidden bg-white/60 backdrop-blur-xl border border-black/10 shadow-xl"
         >
           <div className="grid lg:grid-cols-5 min-h-[600px]">

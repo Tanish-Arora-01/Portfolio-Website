@@ -33,9 +33,9 @@ export function GlassBlogCard({
   return (
     <Dialog>
       <motion.div
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "100px" }}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "50px" }}
         transition={{
           delay: index * 0.15,
           type: "spring",

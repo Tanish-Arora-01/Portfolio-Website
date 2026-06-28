@@ -250,12 +250,12 @@ export function GlassmorphismPortfolioBlock() {
                     ].map((stat) => (
                       <div
                         key={stat.label}
-                        className="rounded-xl border border-border/40 bg-background/50 px-3 py-3 text-center backdrop-blur"
+                        className="rounded-xl border border-border/40 bg-background/50 px-1.5 md:px-3 py-3 text-center backdrop-blur"
                       >
-                        <p className="text-lg font-bold text-indigo-600">
+                        <p className="text-base md:text-lg font-bold text-indigo-600">
                           {stat.value}
                         </p>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-foreground/40">
+                        <p className="text-[8px] md:text-[10px] font-semibold uppercase tracking-widest md:tracking-[0.2em] text-foreground/40 mt-0.5">
                           {stat.label}
                         </p>
                       </div>

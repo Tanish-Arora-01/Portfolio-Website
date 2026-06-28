@@ -83,7 +83,7 @@ const Contact = () => {
   return (
     <section
       name="contact"
-      className="w-full min-h-[100dvh] text-text py-24 relative z-10 flex items-center justify-center overflow-hidden"
+      className="w-full min-h-[100svh] text-text py-24 relative z-10 flex items-center justify-center overflow-hidden"
     >
       {/* Background Decor */}
       <div className="absolute inset-0 -z-10 pointer-events-none">

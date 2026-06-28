@@ -87,7 +87,7 @@ export function GlassmorphismPortfolioBlock() {
   return (
     <section
       name="about"
-      className="relative min-h-dvh overflow-hidden px-6 py-24 lg:py-32 flex flex-col justify-center"
+      className="relative min-h-svh overflow-hidden px-6 py-24 lg:py-32 flex flex-col justify-center"
     >
       <div className="mx-auto max-w-screen-xl w-full">
         <motion.div
@@ -95,14 +95,14 @@ export function GlassmorphismPortfolioBlock() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative overflow-hidden rounded-3xl border border-border/50 bg-background/45 p-8 backdrop-blur-2xl md:p-12"
+          className="relative overflow-hidden rounded-3xl border border-border/50 bg-background/45 p-6 backdrop-blur-2xl md:p-12"
         >
           {/* Glass gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.05] via-transparent to-transparent pointer-events-none" />
 
-          <div className="relative grid gap-12 lg:grid-cols-2">
+          <div className="relative flex flex-col-reverse lg:grid gap-12 lg:grid-cols-2">
             {/* Left column - Main content */}
-            <div className="space-y-8">
+            <div className="space-y-8 flex flex-col justify-center">
               <Badge
                 variant="outline"
                 className="inline-flex items-center gap-2 rounded-full border-border/50 bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-foreground/70 backdrop-blur transition-colors hover:bg-background/70"
@@ -190,7 +190,7 @@ export function GlassmorphismPortfolioBlock() {
             {/* Right column - Profile card */}
             <div className="relative">
               <div className="absolute inset-0 rounded-[32px] bg-gradient-to-b from-indigo-500/15 via-transparent to-transparent blur-3xl" />
-              <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] border border-border/50 bg-background/60 p-8 backdrop-blur-xl">
+              <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-[28px] border border-border/50 bg-background/60 p-6 md:p-8 backdrop-blur-xl">
                 <div className="flex flex-col items-center text-center">
                   {/* Avatar with glow */}
                   <motion.div

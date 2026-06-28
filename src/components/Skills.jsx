@@ -92,7 +92,7 @@ const Skills = () => {
   return (
     <section
       name="skills"
-      className="w-full min-h-dvh text-foreground py-20 relative z-10 flex flex-col justify-center"
+      className="w-full min-h-svh text-foreground py-20 relative z-10 flex flex-col justify-center"
     >
       <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center h-full">
         {/* Heading */}

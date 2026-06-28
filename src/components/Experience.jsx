@@ -45,7 +45,7 @@ const Experience = () => {
   return (
     <section
       name="experience"
-      className="relative min-h-dvh overflow-hidden px-6 py-24 lg:py-32 flex flex-col justify-center"
+      className="relative min-h-svh overflow-hidden px-6 py-24 lg:py-32 flex flex-col justify-center"
     >
       <div className="mx-auto max-w-screen-xl w-full">
         <div className="mb-12 text-center md:text-left">

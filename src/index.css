@@ -52,7 +52,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   width: 100%;
   min-height: 100%;
-  min-height: 100dvh;
+  min-height: 100svh;
   position: relative;
 }
 
@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 /* --app-height is updated via VisualViewport API listener for older browsers */
 /* Modern browsers use 100dvh (dynamic viewport height) which handles address bar automatically */
 :root {
-  --app-height: 100dvh;
+  --app-height: 100svh;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

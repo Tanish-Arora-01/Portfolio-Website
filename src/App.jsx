@@ -9,7 +9,7 @@ import Skills from "./components/Skills";
 
 function App() {
   return (
-    <div className="relative w-full min-h-[100dvh]">
+    <div className="relative w-full min-h-[100svh]">
       {/* Background must be outside content flow and cover full viewport */}
       <PlasmaBackground />
 

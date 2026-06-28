@@ -99,9 +99,9 @@ const Contact = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative rounded-[2rem] overflow-hidden bg-white/60 backdrop-blur-xl border border-black/10 shadow-xl"
         >
-          <div className="grid lg:grid-cols-5 min-h-[600px]">
-            {/* LEFT COLUMN: Contact Info */}
-            <div className="lg:col-span-2 bg-gradient-to-br from-slate-800 to-slate-900 p-10 flex flex-col justify-between relative overflow-hidden">
+          <div className="flex flex-col lg:grid lg:grid-cols-5 lg:min-h-[600px]">
+            {/* LEFT COLUMN: Contact Info (Hidden on Mobile) */}
+            <div className="hidden lg:flex lg:col-span-2 bg-gradient-to-br from-slate-800 to-slate-900 p-10 flex-col justify-between relative overflow-hidden">
               {/* Subtle pattern overlay */}
               <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
 
@@ -156,10 +156,23 @@ const Contact = () => {
             </div>
 
             {/* RIGHT COLUMN: The Form */}
-            <div className="lg:col-span-3 bg-white/30 backdrop-blur-md p-8 md:p-12 relative">
+            <div className="w-full lg:col-span-3 bg-white/30 backdrop-blur-md p-6 md:p-12 relative flex flex-col justify-center">
+              
+              {/* Mobile Header (Hidden on Desktop) */}
+              <div className="block lg:hidden mb-6 text-center space-y-3">
+                <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Let's Talk</h2>
+                <div className="flex justify-center gap-3">
+                  <a href="mailto:tanisharora1105@gmail.com" className="p-3 bg-white/60 text-indigo-600 rounded-full hover:bg-indigo-100 transition shadow-sm"><FaEnvelope /></a>
+                  <a href="tel:+919461113664" className="p-3 bg-white/60 text-indigo-600 rounded-full hover:bg-indigo-100 transition shadow-sm"><FaPhoneAlt /></a>
+                  <a href="https://github.com/Tanish-Arora-01" className="p-3 bg-white/60 text-slate-800 rounded-full hover:bg-slate-200 transition shadow-sm"><FaGithub /></a>
+                  <a href="https://www.linkedin.com/in/tanish-arora-1105ta/" className="p-3 bg-white/60 text-blue-700 rounded-full hover:bg-blue-100 transition shadow-sm"><FaLinkedin /></a>
+                  <a href="/resume_SDE.pdf" download className="p-3 bg-white/60 text-indigo-600 rounded-full hover:bg-indigo-100 transition shadow-sm"><HiDownload /></a>
+                </div>
+              </div>
+
               <form
                 onSubmit={handleSubmit}
-                className="space-y-6 max-w-lg mx-auto lg:mx-0"
+                className="space-y-4 lg:space-y-6 max-w-lg mx-auto lg:mx-0 w-full"
               >
                 {/* Flash Message */}
                 {flash && (
@@ -203,7 +216,7 @@ const Contact = () => {
                   </label>
                   <textarea
                     name="fi-text-message"
-                    rows="4"
+                    rows="3"
                     required
                     placeholder="Tell me about your project..."
                     className="w-full bg-black/5 border border-black/10 rounded-xl px-4 py-3 text-slate-900 placeholder-slate-400 focus:bg-white/80 focus:border-indigo-400/50 focus:ring-1 focus:ring-indigo-400/30 transition-all outline-none resize-none"

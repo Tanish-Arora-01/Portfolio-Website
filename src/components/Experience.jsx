@@ -68,8 +68,26 @@ const Experience = () => {
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
           {/* Timeline - Left Column */}
           <div className="lg:w-1/3 relative">
-            {/* The Line */}
-            <div className="absolute top-[17px] left-0 right-0 h-[2px] bg-border/50 lg:top-0 lg:bottom-0 lg:left-[17px] lg:right-auto lg:w-[2px] lg:h-auto" />
+            {/* The Line Track (Background) */}
+            <div className="absolute top-[17px] left-0 right-0 h-[2px] bg-border/30 lg:top-0 lg:bottom-0 lg:left-[17px] lg:right-auto lg:w-[2px] lg:h-auto" />
+            
+            {/* Desktop Animated Line (Vertical) */}
+            <motion.div 
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="hidden lg:block absolute top-0 bottom-0 left-[17px] w-[2px] bg-gradient-to-b from-indigo-500 via-indigo-500/50 to-transparent origin-top"
+            />
+
+            {/* Mobile Animated Line (Horizontal) */}
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="block lg:hidden absolute top-[17px] left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 via-indigo-500/50 to-transparent origin-left"
+            />
 
             <div className="flex flex-row lg:flex-col gap-4 lg:gap-8 relative z-10 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden">
               {experiences.map((exp, index) => {
@@ -77,10 +95,10 @@ const Experience = () => {
                 return (
                   <motion.div
                     key={exp.id}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: -15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    transition={{ delay: index * 0.15, duration: 0.4, type: "spring", stiffness: 100 }}
                     className={cn(
                       "flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-6 cursor-pointer group transition-opacity shrink-0 w-48 lg:w-auto snap-start",
                       isActive ? "opacity-100" : "opacity-50 hover:opacity-100"

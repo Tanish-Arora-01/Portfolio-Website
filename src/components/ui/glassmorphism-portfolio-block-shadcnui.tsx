@@ -83,6 +83,35 @@ const itemVariants: Variants = {
   },
 };
 
+const containerVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.98 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.06,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const childVariants: Variants = {
+  hidden: { opacity: 0, y: 15, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 140,
+      damping: 15,
+      mass: 0.8,
+    },
+  },
+};
+
 export function GlassmorphismPortfolioBlock() {
   return (
     <section
@@ -91,10 +120,10 @@ export function GlassmorphismPortfolioBlock() {
     >
       <div className="mx-auto max-w-screen-xl w-full">
         <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
           className="relative overflow-hidden rounded-3xl border border-border/50 bg-background/45 p-6 backdrop-blur-2xl md:p-12"
         >
           {/* Glass gradient overlay */}
@@ -103,28 +132,24 @@ export function GlassmorphismPortfolioBlock() {
           <div className="relative flex flex-col-reverse lg:grid gap-12 lg:grid-cols-2">
             {/* Left column - Main content */}
             <div className="space-y-8 flex flex-col justify-center">
-              <Badge
-                variant="outline"
-                className="inline-flex items-center gap-2 rounded-full border-border/50 bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-foreground/70 backdrop-blur transition-colors hover:bg-background/70"
-              >
-                About Me
-              </Badge>
+              <motion.div variants={childVariants}>
+                <Badge
+                  variant="outline"
+                  className="inline-flex items-center gap-2 rounded-full border-border/50 bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.3em] text-foreground/70 backdrop-blur transition-colors hover:bg-background/70"
+                >
+                  About Me
+                </Badge>
+              </motion.div>
 
               <div className="space-y-4">
                 <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  variants={childVariants}
                   className="text-2xl font-semibold tracking-tight md:text-3xl"
                 >
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500">Tanish Arora, Full Stack Developer &amp; Cloud Enthusiast</span>
                 </motion.h2>
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
+                  variants={childVariants}
                   className="max-w-xl text-base leading-relaxed text-foreground/70 md:text-md"
                 >
                   Computer Science Engineering student at{" "}
@@ -142,14 +167,11 @@ export function GlassmorphismPortfolioBlock() {
 
               {/* Highlights grid */}
               <div className="grid gap-4 sm:grid-cols-1">
-                {highlights.map((item, index) => (
+                {highlights.map((item) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.1 * index }}
-                    whileHover={{ y: -6, scale: 1.02, transition: { duration: 0.3, ease: "easeOut" } }}
+                    variants={childVariants}
+                    whileHover={{ y: -4, scale: 1.01, transition: { duration: 0.2 } }}
                     className="group relative overflow-hidden rounded-2xl border border-border/40 bg-background/60 p-5 backdrop-blur transition-all hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5 cursor-pointer"
                   >
                     <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.04] via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 -z-10" />
@@ -167,10 +189,7 @@ export function GlassmorphismPortfolioBlock() {
 
               {/* CTA Button */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                variants={childVariants}
                 className="grid grid-cols-1 gap-4"
               >
                 <Button
@@ -194,10 +213,7 @@ export function GlassmorphismPortfolioBlock() {
                 <div className="flex flex-col items-center text-center">
                   {/* Avatar with glow */}
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
+                    variants={childVariants}
                     className="relative mb-6"
                   >
                     <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full bg-indigo-500/20 blur-2xl" />
@@ -209,10 +225,7 @@ export function GlassmorphismPortfolioBlock() {
                   </motion.div>
 
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
+                    variants={childVariants}
                     className="space-y-1"
                   >
                     <h3 className="text-2xl font-semibold tracking-tight text-foreground">
@@ -224,10 +237,7 @@ export function GlassmorphismPortfolioBlock() {
                   </motion.div>
 
                   <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
+                    variants={childVariants}
                     className="mt-4 max-w-sm text-sm leading-relaxed text-foreground/70"
                   >
                     Passionate about Development, System Design, DevOps,
@@ -237,10 +247,7 @@ export function GlassmorphismPortfolioBlock() {
 
                   {/* Quick Stats */}
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
+                    variants={childVariants}
                     className="mt-6 grid w-full grid-cols-3 gap-3"
                   >
                     {[
@@ -265,10 +272,7 @@ export function GlassmorphismPortfolioBlock() {
 
                 {/* Social links */}
                 <motion.div
-                  variants={listVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-80px" }}
+                  variants={childVariants}
                   className="mt-8 flex flex-col gap-3"
                 >
                   {socialLinks.map((social) => {
@@ -276,7 +280,6 @@ export function GlassmorphismPortfolioBlock() {
                     return (
                       <motion.a
                         key={social.label}
-                        variants={itemVariants}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"

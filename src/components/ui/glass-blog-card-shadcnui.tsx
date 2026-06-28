@@ -187,12 +187,12 @@ export function GlassBlogCard({
       {/* ========================================== */}
       {/* THE POP-UP (DIALOG) MODAL                  */}
       {/* ========================================== */}
-      <DialogContent className="sm:max-w-[640px] bg-white backdrop-blur-2xl border border-black/8 shadow-2xl rounded-3xl overflow-hidden p-0 gap-0 max-h-[85vh] flex flex-col relative">
+      <DialogContent className="sm:max-w-[640px] bg-white backdrop-blur-2xl border border-black/8 shadow-2xl rounded-3xl overflow-hidden p-0 gap-0">
         
         {/* Scrollable Container */}
         <div 
           ref={handleRef}
-          className="overflow-y-auto w-full h-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          className="overflow-y-auto max-h-[85vh] w-full [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           onScroll={(e) => {
             if (e.target.scrollTop > 5) {
               setHasScrolled(true);

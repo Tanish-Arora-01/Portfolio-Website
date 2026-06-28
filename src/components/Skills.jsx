@@ -2,6 +2,26 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Code2, Server, BrainCircuit, Database, CloudCog, Wrench } from "lucide-react";
 import { RevealSkillCard } from "./ui/RevealSkillCard";
+import LogoLoop from "./ui/LogoLoop";
+
+const majorSkills = [
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", alt: "Python" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", alt: "JavaScript" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", alt: "TypeScript" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", alt: "React" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg", alt: "Node.js" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", alt: "Express" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg", alt: "FastAPI" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", alt: "Tailwind CSS" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", alt: "PostgreSQL" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg", alt: "MongoDB" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg", alt: "Redis" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", alt: "AWS" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", alt: "Docker" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg", alt: "Linux" },
+  { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", alt: "GitHub" },
+  { src: "https://cdn.simpleicons.org/leetcode/FFA116", alt: "LeetCode" },
+];
 
 const Skills = () => {
   const skillCategories = [
@@ -92,11 +112,11 @@ const Skills = () => {
   return (
     <section
       name="skills"
-      className="w-full min-h-svh text-foreground py-20 relative z-10 flex flex-col justify-center"
+      className="w-full min-h-svh text-foreground py-20 relative z-10 flex flex-col justify-center overflow-x-hidden"
     >
-      <div className="max-w-screen-xl mx-auto px-6 flex flex-col justify-center h-full">
+      <div className="max-w-screen-xl mx-auto px-6 w-full">
         {/* Heading */}
-        <div className="pb-12 text-center md:text-left">
+        <div className="pb-8 text-center md:text-left">
           <motion.h2
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -112,7 +132,27 @@ const Skills = () => {
             <span className="text-slate-900 font-bold">Modern Web Infrastructure</span>.
           </p>
         </div>
+      </div>
 
+      {/* Logo Loop (Full Width) */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className="mb-12 w-full overflow-hidden mask-fade-edges"
+      >
+        <LogoLoop 
+          logos={majorSkills} 
+          speed={40} 
+          gap={48} 
+          logoHeight={45}
+          pauseOnHover={true}
+          scaleOnHover={true}
+        />
+      </motion.div>
+
+      <div className="max-w-screen-xl mx-auto px-6 w-full">
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category, index) => (

@@ -8,7 +8,7 @@ const experiences = [
     id: 1,
     company: "Sahii.in",
     role: "Full Stack Developer Intern",
-    duration: "May 2026 – Present",
+    duration: "April 2026 – May 2026",
     description:
       "Engineered new full-stack features while modernizing architecture to drastically improve scalability, SEO, and overall user experience.",
     points: [
@@ -18,7 +18,7 @@ const experiences = [
       "Patched critical security vulnerabilities in the legacy codebase to ensure safe user data handling.",
       "Modernized the frontend architecture using EJS, Node.js, and MongoDB, implementing targeted UI changes for better UX.",
       "Optimized the application for maximum speed, SEO, and Core Web Vitals to enhance platform reach.",
-      "Developed responsive, high-performance UI components and seamlessly integrated them with backend infrastructure."
+      "Developed responsive, high-performance UI components and seamlessly integrated them with backend infrastructure.",
     ],
   },
   {
@@ -30,9 +30,9 @@ const experiences = [
       "Researching and contributing to advanced Artificial Intelligence and Generative AI initiatives.",
     points: [
       "Building, optimizing, and evaluating AI-driven applications and learning models under expert mentorship.",
-      "Selected for a specialized program to research and contribute to advanced Artificial Intelligence and Generative AI initiatives."
+      "Selected for a specialized program to research and contribute to advanced Artificial Intelligence and Generative AI initiatives.",
     ],
-  }
+  },
 ];
 
 const Experience = () => {
@@ -70,9 +70,9 @@ const Experience = () => {
           <div className="lg:w-1/3 relative">
             {/* The Line Track (Background) */}
             <div className="absolute top-[17px] left-0 right-0 h-[2px] bg-border/30 lg:top-0 lg:bottom-0 lg:left-[17px] lg:right-auto lg:w-[2px] lg:h-auto" />
-            
+
             {/* Desktop Animated Line (Vertical) */}
-            <motion.div 
+            <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -81,7 +81,7 @@ const Experience = () => {
             />
 
             {/* Mobile Animated Line (Horizontal) */}
-            <motion.div 
+            <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -98,10 +98,16 @@ const Experience = () => {
                     initial={{ opacity: 0, y: -25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
-                    transition={{ delay: 0.3 + (index * 0.4), duration: 0.8, type: "spring", stiffness: 70, damping: 15 }}
+                    transition={{
+                      delay: 0.3 + index * 0.4,
+                      duration: 0.8,
+                      type: "spring",
+                      stiffness: 70,
+                      damping: 15,
+                    }}
                     className={cn(
                       "flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-6 cursor-pointer group transition-opacity shrink-0 w-48 lg:w-auto snap-start",
-                      isActive ? "opacity-100" : "opacity-50 hover:opacity-100"
+                      isActive ? "opacity-100" : "opacity-50 hover:opacity-100",
                     )}
                     onClick={() => {
                       setActiveIndex(index);
@@ -122,7 +128,7 @@ const Experience = () => {
                           "h-3 w-3 rounded-full border-2 transition-all duration-300 relative z-10",
                           isActive
                             ? "border-indigo-600 bg-indigo-600 scale-125 shadow-[0_0_10px_rgba(79,70,229,0.5)]"
-                            : "border-muted-foreground bg-background group-hover:border-indigo-400"
+                            : "border-muted-foreground bg-background group-hover:border-indigo-400",
                         )}
                       />
                     </div>
@@ -132,7 +138,7 @@ const Experience = () => {
                       <h3
                         className={cn(
                           "text-lg lg:text-xl font-bold transition-colors line-clamp-1",
-                          isActive ? "text-indigo-600" : "text-foreground"
+                          isActive ? "text-indigo-600" : "text-foreground",
                         )}
                       >
                         {exp.company}
@@ -153,7 +159,6 @@ const Experience = () => {
           {/* Details - Right Column */}
           <div className="lg:w-2/3 relative">
             <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-background/45 p-6 backdrop-blur-2xl md:p-10 shadow-xl shadow-black/5 h-[500px] md:h-[600px] flex flex-col">
-
               <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent pointer-events-none" />
 
               <AnimatePresence mode="wait">
@@ -167,7 +172,10 @@ const Experience = () => {
                   className="relative h-full flex flex-col overflow-y-auto pr-2 md:pr-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                   onAnimationComplete={() => {
                     if (scrollRef.current) {
-                      setCanScroll(scrollRef.current.scrollHeight > scrollRef.current.clientHeight);
+                      setCanScroll(
+                        scrollRef.current.scrollHeight >
+                          scrollRef.current.clientHeight,
+                      );
                     }
                   }}
                   onScroll={(e) => {
@@ -185,7 +193,10 @@ const Experience = () => {
                         <span className="text-lg font-semibold text-indigo-600">
                           @ {experiences[activeIndex].company}
                         </span>
-                        <Badge variant="outline" className="text-xs bg-background/50 backdrop-blur-sm">
+                        <Badge
+                          variant="outline"
+                          className="text-xs bg-background/50 backdrop-blur-sm"
+                        >
                           {experiences[activeIndex].duration}
                         </Badge>
                       </div>
@@ -220,7 +231,7 @@ const Experience = () => {
                 </motion.div>
               </AnimatePresence>
             </div>
-            
+
             {/* Scroll Indicator */}
             <AnimatePresence>
               {canScroll && !hasScrolled && (
@@ -232,21 +243,34 @@ const Experience = () => {
                 >
                   <motion.button
                     animate={{ y: [0, -8, 0] }}
-                    transition={{ 
-                      duration: 0.6, 
-                      repeat: 3, 
+                    transition={{
+                      duration: 0.6,
+                      repeat: 3,
                       repeatType: "loop",
-                      ease: "easeInOut"
+                      ease: "easeInOut",
                     }}
                     onClick={() => {
                       if (scrollRef.current) {
-                        scrollRef.current.scrollBy({ top: 150, behavior: "smooth" });
+                        scrollRef.current.scrollBy({
+                          top: 150,
+                          behavior: "smooth",
+                        });
                       }
                     }}
                     className="bg-indigo-600 text-white rounded-full p-2 shadow-lg shadow-indigo-500/30 border border-white/20 backdrop-blur-md cursor-pointer hover:bg-indigo-500 transition-colors"
                   >
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                      />
                     </svg>
                   </motion.button>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100/90 px-3 py-1 rounded-full shadow-sm backdrop-blur-md border border-indigo-200/50">

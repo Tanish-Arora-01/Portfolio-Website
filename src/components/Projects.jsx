@@ -21,13 +21,13 @@ const Projects = () => {
       id: 2,
       title: "NeuroSense – AI-Powered Dementia Screening",
       excerpt:
-        "Architected a 3-tier microservice platform merging cognitive metadata with acoustic speech features. Extracted speech biomarkers via Vosk and Librosa, training a scikit-learn model on 1,600 samples for an 89.5% ROC-AUC. Engineered a secure API gateway and automated deployments using multi-stage Docker builds.",
+        "Architected a 3-tier microservice platform merging cognitive metadata with acoustic speech features. Extracted speech biomarkers via Vosk and Librosa, training a scikit-learn model achieving an 89.5% ROC-AUC. Engineered a secure API gateway featuring OAuth and RBAC. Automated deployments via GitHub Actions and multi-stage Docker builds, securing the VPS infrastructure using a Cloudflare Proxy Tunnel.",
       tech: ["React", "Node.js", "FastAPI", "MongoDB", "Docker", "Scikit-learn", "Librosa", "Jest", "Pytest"],
       image: "/projects/3.jpg",
       date: "Mar 2026",
-      github: "https://github.com/yourusername/neurosense",
+      github: "https://github.com/Tanish-Arora-01/NeuroSense",
       demo: "https://neurosense.tanisharora.me/",
-      disableGithub: true,
+      disableGithub: false,
       demoDisabled: false,
     },
     {

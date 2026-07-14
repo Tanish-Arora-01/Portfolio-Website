@@ -19,6 +19,19 @@ const Projects = () => {
     },
     {
       id: 2,
+      title: "NeuroSense – AI-Powered Dementia Screening",
+      excerpt:
+        "Architected a 3-tier microservice platform merging cognitive metadata with acoustic speech features. Extracted speech biomarkers via Vosk and Librosa, training a scikit-learn model on 1,600 samples for an 89.5% ROC-AUC. Engineered a secure API gateway and automated deployments using multi-stage Docker builds.",
+      tech: ["React", "Node.js", "FastAPI", "MongoDB", "Docker", "Scikit-learn", "Librosa", "Jest", "Pytest"],
+      image: "/projects/3.jpg",
+      date: "Mar 2026",
+      github: "https://github.com/yourusername/neurosense",
+      demo: "https://neurosense.tanisharora.me/",
+      disableGithub: true,
+      demoDisabled: false,
+    },
+    {
+      id: 3,
       title: "Secure Plus – Privacy-Focused Document Redaction Tool",
       excerpt:
         "Developed a document processing engine using Python and OpenCV to detect and redact sensitive PII fields including PAN numbers, emails, and dates of birth. Implemented irreversible Gaussian blur masking to protect user-selected regions while preserving original document layout. Designed a scalable architecture where heavy image-processing tasks run inside containerized Python workers deployed on AWS ECS.",
@@ -31,7 +44,7 @@ const Projects = () => {
       demoDisabled: true,
     },
     {
-      id: 3,
+      id: 4,
       title: "PulseGrid – AI-Powered Cognitive Load Tracking System",
       excerpt:
         "Built a cross-process telemetry system using Electron.js and Node.js to capture high-frequency keystroke and mouse activity stored securely in SQLite. Created a privacy-first offline ML pipeline using Python and XGBoost to analyze behavioral patterns and estimate cognitive fatigue. Applied temporal feature engineering including rolling averages and lag features, and integrated Isotonic Regression for probability calibration with ARIMA for time-series forecasting. Packaged the entire ML system into a standalone executable using PyInstaller for offline deployment.",
@@ -41,19 +54,6 @@ const Projects = () => {
       github: "https://github.com/Tanish-Arora-01/Pulse-Grid",
       demo: "#",
       disableGithub: false,
-      demoDisabled: true,
-    },
-    {
-      id: 4,
-      title: "NeuroSense",
-      excerpt:
-        "AI-powered neurological screening engine for early dementia detection. Analyzes speech patterns using TensorFlow to deliver instant, clinical-grade risk assessments.",
-      tech: ["React", "Flask", "TensorFlow", "MongoDB"],
-      image: "/projects/3.jpg",
-      date: "Nov 2025",
-      github: "https://github.com/yourusername/neurosense",
-      demo: "#",
-      disableGithub: true,
       demoDisabled: true,
     },
   ];

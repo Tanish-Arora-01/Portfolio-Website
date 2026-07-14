@@ -146,7 +146,7 @@ const Contact = () => {
                     icon={<FaLinkedin size={20} />}
                   />
                   <a
-                    href="/resume_SDE.pdf"
+                    href="/Tanish_Arora_Resume.pdf"
                     download
                     className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-accent transition-colors ml-auto"
                   >
@@ -158,7 +158,7 @@ const Contact = () => {
 
             {/* RIGHT COLUMN: The Form */}
             <div className="w-full lg:col-span-3 bg-white/30 backdrop-blur-md p-6 md:p-12 relative flex flex-col justify-center">
-              
+
               {/* Mobile Header (Hidden on Desktop) */}
               <div className="block lg:hidden mb-6 text-center space-y-3">
                 <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Let's Talk</h2>
@@ -181,8 +181,8 @@ const Contact = () => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`px-4 py-3 rounded-xl text-sm font-medium ${flash.type === "success"
-                        ? "bg-green-500/10 text-green-400 border border-green-500/20"
-                        : "bg-red-500/10 text-red-400 border border-red-500/20"
+                      ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                      : "bg-red-500/10 text-red-400 border border-red-500/20"
                       }`}
                   >
                     {flash.message}

@@ -1,285 +1,220 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Badge } from "./ui/badge";
+import { ArrowUpRight, Check, MoveUpRight } from "lucide-react";
 import { cn } from "../lib/utils";
 
 const experiences = [
   {
-    id: 1,
+    id: "01",
     company: "Sahii.in",
     role: "Full Stack Developer Intern",
-    duration: "April 2026 – May 2026",
+    duration: "APR — MAY 2026",
+    location: "E-commerce Platform",
     description:
-      "Engineered new full-stack features while modernizing architecture to drastically improve scalability, SEO, and overall user experience.",
+      "Engineered new full-stack features while modernizing architecture to improve scalability, SEO, and the overall shopping experience for a high-traffic e-commerce platform.",
     points: [
-      "Migrated the primary database to the cloud to significantly improve system scalability and reliability for a high-traffic e-commerce platform.",
-      "Configured Cloudflare for robust DNS management and implemented R2/E2 object storage for optimized asset delivery.",
-      "Engineered secure payment controller integrations using Razorpay for seamless and reliable transaction processing.",
-      "Patched critical security vulnerabilities in the legacy codebase to ensure safe user data handling.",
-      "Modernized the frontend architecture using EJS, Node.js, and MongoDB, implementing targeted UI changes for better UX.",
-      "Optimized the application for maximum speed, SEO, and Core Web Vitals to enhance platform reach.",
-      "Developed responsive, high-performance UI components and seamlessly integrated them with backend infrastructure.",
+      "Migrated the primary database to the cloud and configured Cloudflare DNS with R2/E2 object storage for more reliable asset delivery.",
+      "Built secure Razorpay payment controller integrations and patched critical vulnerabilities in the legacy codebase.",
+      "Modernized the EJS, Node.js, and MongoDB frontend architecture with targeted UX changes and responsive components.",
+      "Optimized the application for speed, SEO, and Core Web Vitals to improve reach and real-world performance.",
     ],
+    stack: "EJS · Node.js · MongoDB · Cloudflare · Razorpay",
   },
   {
-    id: 2,
+    id: "02",
     company: "HCLTech",
-    role: "AI & GenAI Intern",
-    duration: "May 2026 – Expected Jul 2026",
+    role: "Gen AI Engineer Intern",
+    duration: "MAY — JUL 2026",
+    location: "Engineering Internship",
     description:
-      "Researching and contributing to advanced Artificial Intelligence and Generative AI initiatives.",
+      "Built AI-driven EEG signal analysis workflows, turning biomedical time-series data into reliable model pipelines under expert mentorship.",
     points: [
-      "Building, optimizing, and evaluating AI-driven applications and learning models under expert mentorship.",
-      "Selected for a specialized program to research and contribute to advanced Artificial Intelligence and Generative AI initiatives.",
+      "Worked with Transformer architectures and Kolmogorov-Arnold Networks (KANs) to engineer intelligent operations on EEG time-series data.",
+      "Developed preprocessing pipelines and performed feature extraction to improve classification performance and system reliability.",
+      "Evaluated deep-learning models for biomedical signal processing, focusing on accuracy, robustness, and practical engineering fit.",
     ],
+    stack: "Python · Transformers · KANs · Time-Series · Signal Processing",
   },
 ];
 
 const Experience = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isLocked, setIsLocked] = useState(false);
-  const scrollRef = useRef(null);
-  const [canScroll, setCanScroll] = useState(false);
-  const [hasScrolled, setHasScrolled] = useState(false);
+  const activeExperience = experiences[activeIndex];
 
   return (
     <section
       name="experience"
-      className="relative min-h-svh overflow-hidden px-6 py-24 lg:py-32 flex flex-col justify-center"
+      className="relative flex min-h-svh w-full items-center overflow-hidden px-6 py-24 text-foreground lg:py-32"
     >
-      <div className="mx-auto max-w-screen-xl w-full">
-        <div className="mb-12 text-center md:text-left">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold inline border-b-4 border-primary"
-          >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500">
+      <div className="pointer-events-none absolute -right-36 top-1/4 h-[34rem] w-[34rem] rounded-full bg-indigo-400/10 blur-3xl" />
+      <div className="relative z-10 mx-auto w-full max-w-screen-xl">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55 }}
+          className="mb-16 flex items-end justify-between border-b border-slate-900/15 pb-4"
+        >
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-xs font-semibold tracking-[0.3em] text-indigo-600">
+              02 / 04
+            </span>
+            <span className="h-px w-10 bg-indigo-500" />
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">
               Experience
             </span>
-          </motion.h2>
-          <p className="py-6 text-muted-foreground text-lg max-w-2xl">
-            My professional journey and internships in Software Development.
-          </p>
-        </div>
+          </div>
+          <span className="hidden font-mono text-xs text-slate-400 sm:block">
+            SELECTED WORK
+          </span>
+        </motion.div>
 
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 relative">
-          {/* Timeline - Left Column */}
-          <div className="lg:w-1/3 relative">
-            {/* The Line Track (Background) */}
-            <div className="absolute top-[17px] left-0 right-0 h-[2px] bg-border/30 lg:top-0 lg:bottom-0 lg:left-[17px] lg:right-auto lg:w-[2px] lg:h-auto" />
-
-            {/* Desktop Animated Line (Vertical) */}
+        <div className="grid gap-14 lg:min-h-[560px] lg:grid-cols-[0.38fr_0.62fr] lg:gap-24">
+          {/* Timeline rail */}
+          <div className="relative">
+            <div className="absolute bottom-5 left-[9px] top-5 w-px bg-slate-900/15" />
             <motion.div
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-              className="hidden lg:block absolute top-0 bottom-0 left-[17px] w-[2px] bg-gradient-to-b from-indigo-500 via-indigo-500/50 to-transparent origin-top"
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute left-[9px] top-5 h-[calc(100%-2.5rem)] w-px origin-top bg-indigo-600"
             />
 
-            {/* Mobile Animated Line (Horizontal) */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-              className="block lg:hidden absolute top-[17px] left-0 right-0 h-[2px] bg-gradient-to-r from-indigo-500 via-indigo-500/50 to-transparent origin-left"
-            />
-
-            <div className="flex flex-row lg:flex-col gap-4 lg:gap-8 relative z-10 overflow-x-auto lg:overflow-visible pb-4 lg:pb-0 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden">
-              {experiences.map((exp, index) => {
-                const isActive = index === activeIndex;
+            <div className="relative flex flex-col gap-10">
+              {experiences.map((experience, index) => {
+                const active = index === activeIndex;
                 return (
-                  <motion.div
-                    key={exp.id}
-                    initial={{ opacity: 0, y: -25 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{
-                      delay: 0.3 + index * 0.4,
-                      duration: 0.8,
-                      type: "spring",
-                      stiffness: 70,
-                      damping: 15,
-                    }}
-                    className={cn(
-                      "flex flex-col lg:flex-row items-center lg:items-start gap-3 lg:gap-6 cursor-pointer group transition-opacity shrink-0 w-48 lg:w-auto snap-start",
-                      isActive ? "opacity-100" : "opacity-50 hover:opacity-100",
-                    )}
-                    onClick={() => {
-                      setActiveIndex(index);
-                      setIsLocked(true);
-                      setHasScrolled(false); // Reset on click
-                    }}
-                    onMouseEnter={() => {
-                      if (!isLocked && index !== activeIndex) {
-                        setActiveIndex(index);
-                        setHasScrolled(false); // Reset on hover switch
-                      }
-                    }}
+                  <motion.button
+                    key={experience.id}
+                    type="button"
+                    initial={{ opacity: 0, x: -16 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45, delay: index * 0.12 }}
+                    onClick={() => setActiveIndex(index)}
+                    className="group flex w-full cursor-pointer items-start gap-7 text-left"
                   >
-                    {/* Timeline Dot Wrapper */}
-                    <div className="h-[36px] w-[36px] flex items-center justify-center shrink-0 lg:h-auto lg:w-auto lg:mt-1.5 lg:ml-[12px]">
-                      <div
+                    <span
+                      className={cn(
+                        "relative z-10 mt-1 flex h-[19px] w-[19px] shrink-0 items-center justify-center rounded-full border-2 bg-white transition-all duration-300",
+                        active
+                          ? "border-indigo-600 shadow-[0_0_0_6px_rgba(99,102,241,0.12)]"
+                          : "border-slate-400 group-hover:border-indigo-500",
+                      )}
+                    >
+                      <span
                         className={cn(
-                          "h-3 w-3 rounded-full border-2 transition-all duration-300 relative z-10",
-                          isActive
-                            ? "border-indigo-600 bg-indigo-600 scale-125 shadow-[0_0_10px_rgba(79,70,229,0.5)]"
-                            : "border-muted-foreground bg-background group-hover:border-indigo-400",
+                          "h-1.5 w-1.5 rounded-full transition-colors",
+                          active ? "bg-indigo-600" : "bg-transparent group-hover:bg-indigo-400",
                         )}
                       />
-                    </div>
-
-                    {/* Timeline Summary Item */}
-                    <div className="flex flex-col gap-1 text-center lg:text-left w-full px-2 lg:px-0">
-                      <h3
-                        className={cn(
-                          "text-lg lg:text-xl font-bold transition-colors line-clamp-1",
-                          isActive ? "text-indigo-600" : "text-foreground",
-                        )}
-                      >
-                        {exp.company}
-                      </h3>
-                      <p className="text-sm font-medium text-foreground/80 line-clamp-1">
-                        {exp.role}
-                      </p>
-                      <p className="text-xs text-muted-foreground font-mono mt-1">
-                        {exp.duration}
-                      </p>
-                    </div>
-                  </motion.div>
+                    </span>
+                    <span className={cn("min-w-0 transition-opacity", active ? "opacity-100" : "opacity-45 group-hover:opacity-100")}>
+                      <span className="mb-3 block font-mono text-xs tracking-[0.2em] text-indigo-600">
+                        {experience.duration}
+                      </span>
+                      <span className="block text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
+                        {experience.company}
+                      </span>
+                      <span className="mt-1 block text-sm text-slate-500">
+                        {experience.role}
+                      </span>
+                    </span>
+                  </motion.button>
                 );
               })}
             </div>
+
+            <div className="mt-16 hidden items-center gap-3 text-slate-400 lg:flex">
+              <ArrowUpRight className="h-5 w-5" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
+                Tap an entry to explore
+              </span>
+            </div>
           </div>
 
-          {/* Details - Right Column */}
-          <div className="lg:w-2/3 relative">
-            <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-background/45 p-6 backdrop-blur-2xl md:p-10 shadow-xl shadow-black/5 h-[500px] md:h-[600px] flex flex-col">
-              <div className="absolute inset-0 bg-gradient-to-br from-foreground/[0.03] via-transparent to-transparent pointer-events-none" />
+          {/* Active role */}
+          <div className="relative min-h-[32rem] lg:h-[560px]">
+            <div className="absolute -left-7 top-0 hidden font-mono text-[10rem] font-semibold leading-none tracking-[-0.12em] text-indigo-600/[0.07] lg:block">
+              {activeExperience.id}
+            </div>
 
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeIndex}
-                  ref={scrollRef}
-                  initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-                  transition={{ duration: 0.3 }}
-                  className="relative h-full flex flex-col overflow-y-auto pr-2 md:pr-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-                  onAnimationComplete={() => {
-                    if (scrollRef.current) {
-                      setCanScroll(
-                        scrollRef.current.scrollHeight >
-                          scrollRef.current.clientHeight,
-                      );
-                    }
-                  }}
-                  onScroll={(e) => {
-                    if (e.target.scrollTop > 5) {
-                      setHasScrolled(true);
-                    }
-                  }}
-                >
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                    <div>
-                      <h3 className="text-3xl font-bold text-foreground mb-2">
-                        {experiences[activeIndex].role}
-                      </h3>
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg font-semibold text-indigo-600">
-                          @ {experiences[activeIndex].company}
-                        </span>
-                        <Badge
-                          variant="outline"
-                          className="text-xs bg-background/50 backdrop-blur-sm"
-                        >
-                          {experiences[activeIndex].duration}
-                        </Badge>
-                      </div>
-                    </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeExperience.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.35 }}
+                className="relative flex h-full flex-col"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-5 border-b-2 border-slate-900 pb-7">
+                  <div>
+                    <p className="mb-3 font-mono text-xs uppercase tracking-[0.24em] text-indigo-600">
+                      {activeExperience.id} / Internship
+                    </p>
+                    <h3 className="max-w-xl text-4xl font-semibold leading-[0.95] tracking-[-0.045em] text-slate-900 sm:text-6xl">
+                      {activeExperience.role}
+                    </h3>
+                  </div>
+                  <MoveUpRight className="h-8 w-8 shrink-0 text-indigo-600" />
+                </div>
+
+                <div className="grid min-h-0 flex-1 gap-10 overflow-y-auto py-8 pr-1 [scrollbar-width:none] sm:grid-cols-[0.8fr_1.2fr] sm:gap-14 [&::-webkit-scrollbar]:hidden">
+                  <div className="self-start">
+                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-slate-400">
+                      {activeExperience.duration}
+                    </p>
+                    <p className="mt-2 text-sm font-medium text-slate-600">
+                      {activeExperience.location}
+                    </p>
+                    <p className="mt-8 border-l-2 border-indigo-500 pl-4 text-base font-medium leading-relaxed text-slate-700">
+                      {activeExperience.description}
+                    </p>
                   </div>
 
-                  <p className="text-base text-foreground/80 mb-8 leading-relaxed">
-                    {experiences[activeIndex].description}
-                  </p>
-
-                  <div className="space-y-4">
-                    <h4 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                      Key Responsibilities & Achievements
-                    </h4>
-                    <ul className="flex flex-col gap-3">
-                      {experiences[activeIndex].points.map((point, i) => (
+                  <div className="self-start">
+                    <p className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-slate-400">
+                      What I worked on
+                    </p>
+                    <ul className="space-y-5">
+                      {activeExperience.points.map((point, index) => (
                         <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
+                          key={point}
+                          initial={{ opacity: 0, x: 8 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.1, duration: 0.3 }}
-                          className="flex items-start gap-3"
+                          transition={{ delay: index * 0.07 }}
+                          className="flex gap-3 text-sm leading-relaxed text-slate-600 sm:text-base"
                         >
-                          <div className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500 shrink-0" />
-                          <span className="text-[15px] leading-relaxed text-foreground/75">
-                            {point}
-                          </span>
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-indigo-600" />
+                          <span>{point}</span>
                         </motion.li>
                       ))}
                     </ul>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                </div>
 
-            {/* Scroll Indicator */}
-            <AnimatePresence>
-              {canScroll && !hasScrolled && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
-                  className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1"
-                >
-                  <motion.button
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{
-                      duration: 0.6,
-                      repeat: 3,
-                      repeatType: "loop",
-                      ease: "easeInOut",
-                    }}
-                    onClick={() => {
-                      if (scrollRef.current) {
-                        scrollRef.current.scrollBy({
-                          top: 150,
-                          behavior: "smooth",
-                        });
-                      }
-                    }}
-                    className="bg-indigo-600 text-white rounded-full p-2 shadow-lg shadow-indigo-500/30 border border-white/20 backdrop-blur-md cursor-pointer hover:bg-indigo-500 transition-colors"
-                  >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2.5}
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                      />
-                    </svg>
-                  </motion.button>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-700 bg-indigo-100/90 px-3 py-1 rounded-full shadow-sm backdrop-blur-md border border-indigo-200/50">
-                    Scroll me
+                <div className="flex items-center justify-between border-t border-slate-900/15 pt-5">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                    Stack
                   </span>
-                </motion.div>
-              )}
+                  <span className="text-right text-xs font-semibold text-slate-700 sm:text-sm">
+                    {activeExperience.stack}
+                  </span>
+                </div>
+              </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+
+        <div className="mt-20 flex items-center justify-between border-t border-slate-900/15 pt-5">
+          <span className="font-mono text-xs uppercase tracking-[0.25em] text-slate-400">
+            Built through curiosity
+          </span>
+          <span className="hidden items-center gap-2 text-xs font-medium text-slate-500 sm:flex">
+            More chapters loading <ArrowUpRight className="h-4 w-4 text-indigo-600" />
+          </span>
         </div>
       </div>
     </section>

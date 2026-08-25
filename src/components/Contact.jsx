@@ -8,7 +8,6 @@ import {
   FaCheckCircle,
   FaTimesCircle,
 } from "react-icons/fa";
-import { HiDownload } from "react-icons/hi";
 import { motion, AnimatePresence } from "framer-motion";
 import SpotlightButton from "./SpotlightButton";
 
@@ -116,14 +115,6 @@ const Contact = () => {
                   <SocialButton
                     href="https://www.linkedin.com/in/tanish-arora-1105ta/"
                     icon={<FaLinkedin size={20} />}
-                  />
-                  <a
-                    href="/Tanish_Arora_Resume.pdf"
-                    download
-                    className="flex items-center gap-2 text-sm font-medium text-white/70 hover:text-accent transition-colors ml-auto"
-                  >
-                    Resume <HiDownload size={18} />
-                  </a>
                 </div>
               </div>
             </div>
@@ -138,7 +129,6 @@ const Contact = () => {
                   <a href="mailto:tanisharora1105@gmail.com" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-indigo-700 rounded-full hover:bg-white/40 transition shadow-sm"><FaEnvelope /></a>
                   <a href="https://github.com/Tanish-Arora-01" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-slate-800 rounded-full hover:bg-white/40 transition shadow-sm"><FaGithub /></a>
                   <a href="https://www.linkedin.com/in/tanish-arora-1105ta/" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-blue-700 rounded-full hover:bg-white/40 transition shadow-sm"><FaLinkedin /></a>
-                  <a href="/resume_SDE.pdf" download className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-indigo-700 rounded-full hover:bg-white/40 transition shadow-sm"><HiDownload /></a>
                 </div>
               </div>
 

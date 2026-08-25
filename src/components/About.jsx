@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDownRight, ArrowUpRight, MoveUpRight } from "lucide-react";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { Link } from "react-scroll";
 
 const principles = [
@@ -82,15 +82,6 @@ const About = () => {
             </div>
 
             <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <a
-                href="/Tanish_Arora_Resume.pdf"
-                target="_blank"
-                rel="noreferrer"
-                className="group inline-flex items-center gap-2 border-b border-slate-900 pb-2 text-sm font-semibold text-slate-900 transition-colors hover:border-indigo-600 hover:text-indigo-600"
-              >
-                Read the résumé
-                <MoveUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </a>
               <Link
                 to="contact"
                 smooth

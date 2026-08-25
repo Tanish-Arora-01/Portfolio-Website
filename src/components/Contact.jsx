@@ -58,6 +58,7 @@ const Contact = () => {
   };
 
   return (
+    <>
     <section
       name="contact"
       className="w-full min-h-0 lg:min-h-[100svh] text-text py-16 lg:py-24 relative z-10 flex items-center justify-center overflow-hidden"
@@ -145,59 +146,6 @@ const Contact = () => {
                 onSubmit={handleSubmit}
                 className="space-y-4 lg:space-y-6 max-w-lg mx-auto lg:mx-0 w-full"
               >
-                {/* Flash Message */}
-                <AnimatePresence>
-                  {flash && (
-                    <motion.div
-                      key="flash"
-                      initial={{ opacity: 0, y: -12, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                      transition={{ duration: 0.3, ease: "easeOut" }}
-                      className={`relative overflow-hidden rounded-xl border backdrop-blur-sm shadow-lg ${
-                        flash.type === "success"
-                          ? "bg-emerald-500/10 border-emerald-500/25"
-                          : "bg-red-500/10 border-red-500/25"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3 px-4 py-3.5">
-                        <div
-                          className={`flex-shrink-0 ${
-                            flash.type === "success"
-                              ? "text-emerald-400"
-                              : "text-red-400"
-                          }`}
-                        >
-                          {flash.type === "success" ? (
-                            <FaCheckCircle size={18} />
-                          ) : (
-                            <FaTimesCircle size={18} />
-                          )}
-                        </div>
-                        <p
-                          className={`text-sm font-medium ${
-                            flash.type === "success"
-                              ? "text-emerald-300"
-                              : "text-red-300"
-                          }`}
-                        >
-                          {flash.message}
-                        </p>
-                      </div>
-                      {/* Auto-dismiss progress bar */}
-                      <motion.div
-                        initial={{ scaleX: 1 }}
-                        animate={{ scaleX: 0 }}
-                        transition={{ duration: 5, ease: "linear" }}
-                        className={`absolute bottom-0 left-0 h-[2px] w-full origin-left ${
-                          flash.type === "success"
-                            ? "bg-emerald-400/60"
-                            : "bg-red-400/60"
-                        }`}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <InputGroup
@@ -246,6 +194,65 @@ const Contact = () => {
         </motion.div>
       </div>
     </section>
+
+      {/* Toast Notification — fixed at bottom of screen */}
+      <AnimatePresence>
+        {flash && (
+          <motion.div
+            key="toast"
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 80 }}
+            transition={{ type: "spring", damping: 22, stiffness: 300 }}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-md"
+          >
+            <div
+              className={`relative overflow-hidden rounded-2xl border backdrop-blur-xl shadow-2xl ${
+                flash.type === "success"
+                  ? "bg-slate-900/90 border-sky-400/30"
+                  : "bg-slate-900/90 border-red-400/30"
+              }`}
+            >
+              <div className="flex items-center gap-3 px-5 py-4">
+                <div
+                  className={`flex-shrink-0 p-2 rounded-full ${
+                    flash.type === "success"
+                      ? "bg-sky-400/15 text-sky-400"
+                      : "bg-red-400/15 text-red-400"
+                  }`}
+                >
+                  {flash.type === "success" ? (
+                    <FaCheckCircle size={18} />
+                  ) : (
+                    <FaTimesCircle size={18} />
+                  )}
+                </div>
+                <p
+                  className={`text-sm font-medium ${
+                    flash.type === "success"
+                      ? "text-slate-100"
+                      : "text-slate-100"
+                  }`}
+                >
+                  {flash.message}
+                </p>
+              </div>
+              {/* Auto-dismiss progress bar */}
+              <motion.div
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0 }}
+                transition={{ duration: 5, ease: "linear" }}
+                className={`absolute bottom-0 left-0 h-[2px] w-full origin-left ${
+                  flash.type === "success"
+                    ? "bg-sky-400/70"
+                    : "bg-red-400/70"
+                }`}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 

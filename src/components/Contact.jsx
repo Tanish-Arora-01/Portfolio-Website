@@ -1,34 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaPhoneAlt,
   FaMapMarkerAlt,
   FaPaperPlane,
-  FaWhatsapp,
 } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 import { motion } from "framer-motion";
 import SpotlightButton from "./SpotlightButton";
 
-const FORM_ID = "wz3lznovti3";
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const Contact = () => {
-  const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [flash, setFlash] = useState(null);
-
-  useEffect(() => {
-    if (window.Forminit) {
-      window.forminit = new window.Forminit();
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = "https://forminit.com/sdk/v1/forminit.js";
-    script.onload = () => (window.forminit = new window.Forminit());
-    document.body.appendChild(script);
-  }, []);
 
   const showFlash = (type, message) => {
     setFlash({ type, message });
@@ -38,42 +24,30 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!window.forminit) {
-      showFlash("error", "Form service unavailable — please refresh.");
+    if (!WEB3FORMS_KEY) {
+      showFlash("error", "Form service unavailable — please try again later.");
       return;
     }
 
     const form = e.target;
     const formData = new FormData(form);
-
-    const phone = formData.get("fi-sender-phone") || "";
-
-    // Basic validation logic preserved
-    if (!phone.startsWith("+") || phone.length < 11) {
-      showFlash("error", "Please enter mobile in +91XXXXXXXXXX format.");
-      return;
-    }
+    formData.append("access_key", WEB3FORMS_KEY);
 
     try {
       setLoading(true);
-      const res = await window.forminit.submit(FORM_ID, formData);
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
       setLoading(false);
 
-      if (!res) {
-        showFlash("error", "Unexpected response — please try again.");
-        return;
-      }
-
-      if (res.error) {
+      if (data.success) {
+        showFlash("success", "✅ Message sent — I'll get in touch soon.");
+        form.reset();
+      } else {
         showFlash("error", "Submission failed — please check your details.");
-        return;
       }
-
-      showFlash("success", "✅ Message sent — I’ll get in touch soon.");
-      form.reset();
-      // Reset phone default value
-      const phoneInput = form.querySelector('[name="fi-sender-phone"]');
-      if (phoneInput) phoneInput.value = "+91";
     } catch (err) {
       setLoading(false);
       console.error("Form submit error:", err);
@@ -125,11 +99,6 @@ const Contact = () => {
                     href="mailto:tanisharora1105@gmail.com"
                   />
                   <ContactRow
-                    icon={<FaPhoneAlt />}
-                    label="Call me at"
-                    value="+91-9461113664"
-                  />
-                  <ContactRow
                     icon={<FaMapMarkerAlt />}
                     label="Based in"
                     value="Chennai, India"
@@ -164,7 +133,6 @@ const Contact = () => {
                 <h2 className="text-3xl font-bold text-slate-900 tracking-tight">Let's Talk</h2>
                 <div className="flex justify-center gap-3">
                   <a href="mailto:tanisharora1105@gmail.com" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-indigo-700 rounded-full hover:bg-white/40 transition shadow-sm"><FaEnvelope /></a>
-                  <a href="https://wa.me/919461113664" target="_blank" rel="noreferrer" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-emerald-600 rounded-full hover:bg-white/40 transition shadow-sm"><FaWhatsapp /></a>
                   <a href="https://github.com/Tanish-Arora-01" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-slate-800 rounded-full hover:bg-white/40 transition shadow-sm"><FaGithub /></a>
                   <a href="https://www.linkedin.com/in/tanish-arora-1105ta/" className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-blue-700 rounded-full hover:bg-white/40 transition shadow-sm"><FaLinkedin /></a>
                   <a href="/resume_SDE.pdf" download className="p-3 bg-white/20 backdrop-blur-md border border-white/30 text-indigo-700 rounded-full hover:bg-white/40 transition shadow-sm"><HiDownload /></a>
@@ -192,31 +160,23 @@ const Contact = () => {
                 <div className="grid md:grid-cols-2 gap-6">
                   <InputGroup
                     label="Your Name"
-                    name="fi-sender-fullName"
+                    name="name"
                     placeholder="John Doe"
                   />
                   <InputGroup
                     label="Your Email"
-                    name="fi-sender-email"
+                    name="email"
                     type="email"
                     placeholder="john@example.com"
                   />
                 </div>
-
-                <InputGroup
-                  label="Phone Number"
-                  name="fi-sender-phone"
-                  type="tel"
-                  defaultValue="+91"
-                  placeholder="+91XXXXXXXXXX"
-                />
 
                 <div>
                   <label className="block text-sm font-medium text-gray-400 mb-2">
                     Message
                   </label>
                   <textarea
-                    name="fi-text-message"
+                    name="message"
                     rows="3"
                     required
                     placeholder="Tell me about your project..."

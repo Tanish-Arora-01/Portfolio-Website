@@ -115,6 +115,7 @@ const Contact = () => {
                   <SocialButton
                     href="https://www.linkedin.com/in/tanish-arora-1105ta/"
                     icon={<FaLinkedin size={20} />}
+                  />
                 </div>
               </div>
             </div>
